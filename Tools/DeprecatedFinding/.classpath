@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="org.eclipse.core.contenttype-3.4.200.v20140207-1251.jar"/>
+	<classpathentry kind="lib" path="org.eclipse.core.jobs-3.6.1.v20141014-1248.jar"/>
+	<classpathentry kind="lib" path="org.eclipse.core.resources-3.9.1.v20140825-1431.jar"/>
+	<classpathentry kind="lib" path="org.eclipse.equinox.common-3.6.200.v20130402-1505.jar"/>
+	<classpathentry kind="lib" path="org.eclipse.equinox.preferences-3.5.200.v20140224-1527.jar"/>
+	<classpathentry kind="lib" path="org.eclipse.jdt.core-3.10.0.jar"/>
+	<classpathentry kind="lib" path="org.eclipse.osgi-3.10.2.v20150203-1939.jar"/>
+	<classpathentry kind="lib" path="org.eclipse.core.runtime_3.10.0.v20140318-2214.jar"/>
+	<classpathentry kind="lib" path="opencsv-3.3.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
