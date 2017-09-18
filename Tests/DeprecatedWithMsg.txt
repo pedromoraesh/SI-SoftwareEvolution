@@ -1,0 +1,116 @@
+Fields;use;9da1b1a;Field;/** 
+ * @deprecated use that method
+ * @param arabic
+ */
+
+Fields;replace;9da1b1a;Field;/** 
+ * @deprecated replace that method
+ * @param arabic
+ */
+
+Fields;refer;9da1b1a;Field;/** 
+ * @deprecated refer to another
+ * @param arabic
+ */
+
+Fields;equivalent;9da1b1a;Field;/** 
+ * @deprecated the equivalent method -> is another
+ * @param arabic
+ */
+
+Fields;arrobaLink;9da1b1a;Field;/** 
+ * @deprecated {@link} methodWithEquivalent is better
+ * @param arabic
+ */
+
+Fields;arrobaSee;9da1b1a;Field;/** 
+ * @deprecated
+ * @see "otherMethod" this one
+ * @param arabic
+ */
+
+Fields;instead;9da1b1a;Field;/** 
+ * @deprecated you must go to another instead of that
+ * @param arabic
+ */
+
+Fields;arrobaCode;9da1b1a;Field;/** 
+ * @deprecated {@code} code example
+ * @param arabic
+ */
+
+Fields;shoudBeUsed;9da1b1a;Field;/** 
+ * @deprecated should be used another one
+ * @param arabic
+ */
+
+Fields;moved;9da1b1a;Field;/** 
+ * @deprecated this method was moved to another place
+ * @param arabic
+ */
+
+Fields;see;9da1b1a;Field;/** 
+ * @deprecated see another method
+ * @param arabic
+ */
+
+TypeTest;TypeTest;9da1b1a;Type;/** 
+ * @deprecated use that method
+ */
+
+Validator;methodWithUse;9da1b1a;Method;/** 
+ * @deprecated use that method
+ * @param arabic
+ */
+
+Validator;methodWithReplace;9da1b1a;Method;/** 
+ * @deprecated replace that method
+ * @param arabic
+ */
+
+Validator;methodWithRefer;9da1b1a;Method;/** 
+ * @deprecated refer to another
+ * @param arabic
+ */
+
+Validator;methodWithEquivalent;9da1b1a;Method;/** 
+ * @deprecated the equivalent method -> is another
+ * @param arabic
+ */
+
+Validator;methodWithLink;9da1b1a;Method;/** 
+ * @deprecated {@link} methodWithEquivalent is better
+ * @param arabic
+ */
+
+Validator;methodWithSee;9da1b1a;Method;/** 
+ * @deprecated
+ * @see "otherMethod" this one
+ * @param arabic
+ */
+
+Validator;methodWithInstead;9da1b1a;Method;/** 
+ * @deprecated you must go to another instead of that
+ * @param arabic
+ */
+
+Validator;methodWithCode;9da1b1a;Method;/** 
+ * @deprecated {@code} code example
+ * @param arabic
+ */
+
+Validator;methodWithShouldBeUsed;9da1b1a;Method;/** 
+ * @deprecated should be used another one
+ * @param arabic
+ */
+
+Validator;methodWithMoved;9da1b1a;Method;/** 
+ * @deprecated this method was moved to another place
+ * @param arabic
+ */
+
+Validator;methodWithSee2;9da1b1a;Method;/** 
+ * @deprecated see another method
+ * @param arabic
+ */
+

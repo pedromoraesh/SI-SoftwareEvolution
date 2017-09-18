@@ -1,0 +1,17 @@
+FieldsNoJavaDoc;use;9da1b1a;Field;
+FieldsNoJavaDoc;replace;9da1b1a;Field;
+FieldsNoJavaDoc;refer;9da1b1a;Field;
+FieldsNoJavaDoc;equivalent;9da1b1a;Field;
+FieldsNoJavaDoc;arrobaLink;9da1b1a;Field;
+FieldsNoJavaDoc;arrobaSee;9da1b1a;Field;
+FieldsNoJavaDoc;arrobaCode;9da1b1a;Field;
+FieldsNoJavaDoc;instead;9da1b1a;Field;
+FieldsNoJavaDoc;shouldBeUsed;9da1b1a;Field;
+FieldsNoJavaDoc;moved;9da1b1a;Field;
+FieldsNoJavaDoc;see;9da1b1a;Field;
+TypeWithAnnotation;TypeWithAnnotation;9da1b1a;Type;
+TypeWithJavaDoc;TypeWithJavaDoc;9da1b1a;Type;
+Validator;fielDeprecatedWithAnnotation;9da1b1a;Field;
+Validator;fieldDeprecatedWithJavaDocAnnotation;9da1b1a;Field;
+Validator;methodDeprecatedOnlyWithAnnotation;9da1b1a;Method;
+Validator;deprecatedWithJavaDocAnnotation;9da1b1a;Method;
