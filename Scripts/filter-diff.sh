@@ -3,7 +3,7 @@
 dir="C:\Users\Pedro Henrique\Documents\IC\Clones e Scripts"
 #dir="C:\Users\"username"\Documents\IC\Clones e Scripts"
 
-#enter in each project, configured in line 59
+#enter in each project, configured in line 60
 while read -r folder || [[ -n "$folder" ]]
 do
 
@@ -13,6 +13,8 @@ do
 	echo $project,$i
 
 	lineImport=""
+
+	kind=""
 
 	#read each line of the diff.txt. configured in line 54
 	while read -r line || [[ -n "$line" ]]
@@ -25,6 +27,8 @@ do
 			set -- $var1
 			commit=$2
 			echo $commit
+
+
 		fi
 
 		if echo "$line" | egrep "^diff[ ]--git[ ]*.*$" # diff --git a/x b/x
@@ -32,25 +36,29 @@ do
 
 			var2=$(echo $line | awk -F " " '{print $1,$2,$3,$4}')
 			set -- $var2
-			path=$(echo $4 | sed 's/^b//') #echo x/asclkc | sed 's/^x//' >> /asclkc
 
+			path=$(echo $4 | sed 's/^b//') #echo x/asclkc | sed 's/^x//' >> /asclkc
 			echo "Path : $path"
+
+			kind=$(echo $3 | awk -F "." '{print $NF}')
+			set -- $kind
+			echo "Kind: $kind"
+
 		fi
 
-		if echo "$line" | egrep "^[+|-]import[ ]*.*;$" #+|-import com.nostra13.universalimageloader.core.assist.ContentLengthInputStream;
-		then
-
-			var1=$(echo $line | awk -F " " '{print $1,$2,$3}')
-			set -- $var1
-
-			if [ "" == "$3" ]; #don't take statics
+		if [ "java" == "$kind" ]; #only export if is .java
+			then
+				if echo "$line" | egrep "^[+|-]import[ ]*.*;$" #+|-import com.nostra13.universalimageloader.core.assist.ContentLengthInputStream;
 				then
 
-				echo "Project --> $project"
-				echo "$path, $commit, $line" >> "$dir\\Diffs\\$project.txt" #....Diff/"gitProject.txt"
-			fi
-		fi
+					var1=$(echo $line | awk -F " " '{print $1,$2,$3}')
+					set -- $var1
 
+					echo "Project --> $project"
+					echo "$path, $commit, $line" >> "$dir\\Diffs\\$project.txt" #....Diff/"gitProject.txt"
+
+				fi
+		fi
 	done < "$dir\\$project\\$project.txt"
 
 	echo "Job Finished for $project"
@@ -59,4 +67,3 @@ do
 done < "repository.txt"
 
 echo "All"
-#done<"$dir/bib-Diff.txt"

@@ -9,7 +9,6 @@ while read -r directory || [[ -n "$directory" ]]
 
     while read -r hash || [[ -n "$hash" ]]
   		do
-  		git checkout $hash
 
       java -jar ../RefDiff.jar "$directory" "$url" "$hash"
 
