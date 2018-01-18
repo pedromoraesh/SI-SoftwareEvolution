@@ -1,22 +1,14 @@
 package br.ufms.facom.model;
 
-public class Parameter extends Container {
-	private int id;
-	private String name;
-	private Container type;
+public class Parameter extends Entity {
+	private Entity type;
 	private int declaredTypeID;
 	private int parentID;
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public Container getType() {
+	public Entity getType() {
 		return type;
 	}
-	public void setType(Container type) {
+	public void setType(Entity type) {
 		this.type = type;
 	}
 	public int getDeclaredTypeID() {
@@ -30,12 +22,6 @@ public class Parameter extends Container {
 	}
 	public void setParentID(int parentID) {
 		this.parentID = parentID;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
 	}
 	
 	

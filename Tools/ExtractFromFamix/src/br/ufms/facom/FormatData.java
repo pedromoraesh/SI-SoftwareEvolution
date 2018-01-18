@@ -9,26 +9,24 @@ import java.util.Scanner;
 
 import org.apache.commons.lang3.StringUtils;
 
-import br.ufms.facom.model.Entity;
+import br.ufms.facom.model.FamixEntity;
 
 public class FormatData {
 
-	public static Map<Integer, Entity> mseToMap(String path) throws IOException {
+	public static Map<Integer, FamixEntity> mseToMap(String path) throws IOException {
 		
-		Map<Integer, Entity> map = new HashMap<Integer, Entity>();
+		Map<Integer, FamixEntity> map = new HashMap<Integer, FamixEntity>();
 		String split[];
 		ArrayList<String[]> list = new ArrayList<String[]>();
 		
 
 		Scanner in = new Scanner(new FileReader(path));
-		//		Scanner in = new Scanner(new FileReader("C:/Users/Pedro Henrique/Documents/IC/Clones e Scripts/copycat/"
-		//		   		+ "copycat.mse"));
 
 		String line = in.nextLine();		
 
 		while(in.hasNextLine()){
 
-			Entity entity = new Entity();
+			FamixEntity entity = new FamixEntity();
 			int id = 0;
 			list = new ArrayList<String[]>();;
 			if(line.contains("FAMIX.") && !line.contains("FAMIX.Comment") ){

@@ -1,27 +1,13 @@
 package br.ufms.facom.model;
 
-public class Attribute extends Container {
-	private int id;
-	private String name;
+public class Attribute extends Entity {
 	private int declaredTypeID;
-	//Type -> cont
-	private Container type;
-	private int parent;
+	private Entity type;
+	private int parentID;
+	private String modifier;
 	
 	public String containerName(){
 		return type.getName();
-	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
 	}
 	public int getDeclaredTypeID() {
 		return declaredTypeID;
@@ -29,16 +15,22 @@ public class Attribute extends Container {
 	public void setDeclaredTypeID(int type) {
 		this.declaredTypeID = type;
 	}
-	public int getParent() {
-		return parent;
+	public int getParentID() {
+		return parentID;
 	}
-	public void setParent(int parentClass) {
-		this.parent = parentClass;
+	public void setParentID(int parentClass) {
+		this.parentID = parentClass;
 	}
-	public Container getType() {
+	public Entity getType() {
 		return type;
 	}
-	public void setType(Container type) {
+	public void setType(Entity type) {
 		this.type = type;
+	}
+	public String getModifier() {
+		return modifier;
+	}
+	public void setModifier(String modifier) {
+		this.modifier = modifier;
 	}
 }

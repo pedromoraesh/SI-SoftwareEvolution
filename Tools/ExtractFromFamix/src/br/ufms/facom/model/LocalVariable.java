@@ -1,29 +1,15 @@
 package br.ufms.facom.model;
 
-public class LocalVariable extends Container {
-	private int id;
-	private String name;
+public class LocalVariable extends Entity {
 	private int declaredTypeID;
 	private int parentID;
-	private Container type;
+	private Entity type;
 	
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public Container getType() {
+	public Entity getType() {
 		return type;
 	}
-	public void setType(Container type) {
+	public void setType(Entity type) {
 		this.type = type;
-	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
 	}
 	public int getDeclaredTypeID() {
 		return declaredTypeID;

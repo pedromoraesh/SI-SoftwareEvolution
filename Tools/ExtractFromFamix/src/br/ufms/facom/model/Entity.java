@@ -1,27 +1,22 @@
 package br.ufms.facom.model;
 
-import java.util.ArrayList;
-
 public class Entity {
-	
+	private String name;
+	private String fullName;
 	private int id;
-	private String type;
-	private ArrayList<String[]> list;
+	private Entity container;
 	
-	public Entity(){
-		
+	public String getName() {
+		return name;
 	}
-	public ArrayList<String[]> getList() {
-		return list;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public void setList(ArrayList<String[]> list2) {
-		this.list = list2;
+	public String getFullName() {
+		return fullName;
 	}
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 	public int getId() {
 		return id;
@@ -29,7 +24,28 @@ public class Entity {
 	public void setId(int id) {
 		this.id = id;
 	}
+	public Entity getContainer(){
+		return container;
+	}
+	public void setContainer(Entity container){
+		this.container = container;
+	}
 	
+	@Override
+	public boolean equals(Object obj){
+		if(obj == null){
+			return false;
+		}
+		if(obj instanceof Entity){
+			Entity entity = (Entity)obj;
+			return entity.getFullName().equals(getFullName());
+		}
+		return false;
+	}
 	
+	@Override
+	public int hashCode(){
+		return this.fullName.hashCode();
+	}
 	
 }

@@ -8,44 +8,55 @@ public class Class extends Container {
 
 	private ArrayList<Method> listMethods = new ArrayList<Method>();
 	private ArrayList<Attribute> listAttributes = new ArrayList<Attribute>();
-	private Class superClass;
-	private int container;
-	private boolean isInternalClass = false;
+	private Entity superClass;
+	private int containerID;
+	private ArrayList<Entity> listInternalClasses = new ArrayList<Entity>();
 	
-	public int calculateCBO(){
+	public Set<Entity> calculateCBO(){
 		
+		Set<Entity> hashSet = new HashSet<Entity>();
 		
-		Set<Container> hashSet = new HashSet<Container>();
-		
-		for(Method method: listMethods){
-			for(LocalVariable localVariable: method.getLocalVariables()){
-				if(localVariable.getType().getClass().getSimpleName().equals(PrimitiveType.class.getSimpleName()) == false){
-					hashSet.add(localVariable.getType());
-				}
-					
+		for(Entity entity: listInternalClasses){
+			if(entity.getClass().getSimpleName().equals(Class.class.getSimpleName())){
+				Class temp = (Class)entity;
+				hashSet.addAll(temp.calculateCBO());
+				hashSet.add(temp);
 			}
-			
-			for(Parameter parameter: method.getParameters()){
-				if(parameter.getType().getClass().getSimpleName().equals(PrimitiveType.class.getSimpleName()) == false){
-					hashSet.add(parameter.getType());
-				}
+			else if(entity.getClass().getSimpleName().equals(ParameterizableClass.class.getSimpleName())){
+				ParameterizableClass temp = (ParameterizableClass)entity;
+				hashSet.addAll(temp.calculateCBO());
+				hashSet.add(temp);
 				
 			}
-			
 		}
 		
-		hashSet.add(this.superClass);
+//		for(Method method: listMethods){
+//			hashSet.addAll(method.calcCBO());	
+//		}
 		
-		for(Attribute attributes: listAttributes){
-			if(attributes.getType().getClass().getSimpleName().equals(PrimitiveType.class.getSimpleName()) == false){
-				hashSet.add(attributes.getType());
+		if(this.superClass != null){
+			hashSet.add(this.superClass);
+		}
+		
+		for(Attribute attribute: listAttributes){
+			if(attribute.getType().getClass().getSimpleName().equals(PrimitiveType.class.getSimpleName()) == true){
+				//DO nothing
+			}
+			else if(attribute.getType().getClass().getSimpleName().equals(ParameterizedType.class.getSimpleName()) == true){
+				ParameterizedType aux = (ParameterizedType)attribute.getType();
+				hashSet.addAll(aux.argumentsElegibleForCBO());
+			}
+			else{
+				hashSet.add(attribute.getType());
 			}
 			
 		}
-		for(Container container: hashSet){
-			System.out.println(container.getName());
-		}
-		return hashSet.size();
+
+//		for(Entity entidade: hashSet){
+//			System.out.println(entidade.getName());
+//		}
+
+		return hashSet;
 	}	
 	public int getId() {
 		return super.getId();
@@ -59,35 +70,57 @@ public class Class extends Container {
 	public void setName(String name) {
 		super.setName(name);
 	}
+	
 	public ArrayList<Method> getMethods() {
 		return listMethods;
 	}
 	public void setMethods(ArrayList<Method> listMethods) {
 		this.listMethods = listMethods;
 	}
+	
 	public ArrayList<Attribute> getAttributes() {
 		return listAttributes;
 	}
 	public void setAttributes(ArrayList<Attribute> listFields) {
 		this.listAttributes = listFields;
 	}
-	public Class getSuperClass() {
+	public Entity getSuperClass() {
 		return superClass;
 	}
-	public void setSuperClass(Class superClass) {
+	public void setSuperClass(Entity superClass) {
 		this.superClass = superClass;
 	}
-	public int getContainer() {
-		return container;
+	public int getContainerID() {
+		return containerID;
 	}
-	public void setContainer(int container) {
-		this.container = container;
+	public void setContainerID(int cointainerID) {
+		this.containerID = cointainerID;
 	}
-	public boolean isInternalClass() {
-		return isInternalClass;
+	
+	public Method findMethod(String fullName){
+		for(Method method: this.listMethods){
+			if(method.getFullName().equals(fullName)){
+				return method;
+			}
+		}
+		return null;
 	}
-	public void setInternalClass(boolean isInternalClass) {
-		this.isInternalClass = isInternalClass;
+	
+	public Attribute findAttribute(String name){
+		for(Attribute attribute: this.listAttributes){
+			if(attribute.getName().equals(name)){
+				return attribute;
+			}
+		}
+		return null;
 	}
+	
+	public ArrayList<Entity> getInternalClasses() {
+		return listInternalClasses;
+	}
+	public void setInternalClasses(ArrayList<Entity> listInternalClasses) {
+		this.listInternalClasses = listInternalClasses;
+	}
+
 	
 }

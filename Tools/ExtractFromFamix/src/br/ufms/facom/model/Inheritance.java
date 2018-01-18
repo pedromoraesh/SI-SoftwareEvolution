@@ -1,7 +1,8 @@
 package br.ufms.facom.model;
 
-public class Inheritance extends Container {
+public class Inheritance{
 	
+	private int id;
 	private int subClassID;
 	private int superClassID;
 	
@@ -16,6 +17,12 @@ public class Inheritance extends Container {
 	}
 	public void setSuperClassID(int superClassID) {
 		this.superClassID = superClassID;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	

@@ -1,17 +1,14 @@
 package br.ufms.facom.model;
 
-public class PrimitiveType extends Container {
-	
-	public int getId() {
-		return super.getId();
+public class PrimitiveType extends Entity {
+	private String modifier;
+
+	public String getModifier() {
+		return modifier;
 	}
-	public void setId(int id) {
-		super.setId(id);
+
+	public void setModifier(String modifier) {
+		this.modifier = modifier;
 	}
-	public String getName() {
-		return super.getName();
-	}
-	public void setName(String name) {
-		super.setName(name);
-	}
+
 }

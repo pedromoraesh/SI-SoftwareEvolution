@@ -1,18 +1,23 @@
 package br.ufms.facom.model;
 
-public class Type extends Container {
-	
-	public int getId() {
-		return super.getId();
-	}
-	public void setId(int id) {
-		super.setId(id);
-	}
-	public String getName() {
-		return super.getName();
-	}
-	public void setName(String name) {
-		super.setName(name);
+public class Type extends Entity {
+	private int containerID;
+	private String modifier;
+
+	public int getContainerID() {
+		return containerID;
 	}
 
+	public void setContainerID(int containerID) {
+		this.containerID = containerID;
+	}
+
+	public String getModifier() {
+		return modifier;
+	}
+
+	public void setModifier(String modifier) {
+		this.modifier = modifier;
+	}
+	
 }
