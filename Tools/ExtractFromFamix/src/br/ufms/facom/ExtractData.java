@@ -8,9 +8,10 @@ import java.util.ArrayList;
 
 public class ExtractData {
 	
-	public void export(String path, String content){
+	public void export(String path, String content, String fileName){
 		File dir = new File(path);
-        File arq = new File(dir, "DiffBetweenVersions.txt");
+		File arq = new File(dir, fileName);		
+	
         
         try {
 			if (dir.exists()) {			
@@ -19,7 +20,11 @@ public class ExtractData {
 			    }
 			}
 			else{
-				System.out.println("Directory don't exists");
+				System.out.println("Directory don't exists, creating new folder");
+				dir.mkdir();
+				if(arq.exists()){
+					arq.createNewFile();
+				}
 			}	
 			FileWriter fileWriter = new FileWriter(arq, true);
 			PrintWriter printWriter = new PrintWriter(fileWriter);

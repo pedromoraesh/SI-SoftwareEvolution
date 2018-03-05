@@ -89,7 +89,8 @@ public class FormatData {
 							line = StringUtils.remove(line, "'");
 							String aux = line + "\n";
 							line = in.nextLine();
-							while(StringUtils.countMatches(line, "'") == 0 || StringUtils.countMatches(line, "'") >= 2 ){
+							while(StringUtils.countMatches(line, "'") == 0 || StringUtils.countMatches(line, "'") >= 2 &&
+									!StringUtils.contains(line, "'))")){
 								aux = aux + line + "\n";
 								line = in.nextLine();
 							}

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_COLOR_BURNPeer;
+
 public class Method extends Container {
 	
 	
@@ -16,44 +18,51 @@ public class Method extends Container {
 	private Entity type;
 	
 	
-	public Set<Entity> calcCBO(){
+	public Set<Entity> calcCBOWithLocalVariables(){
 		
 		Set<Entity> hashSet = new HashSet<Entity>();
 		
-		if(!type.getClass().getSimpleName().equals(PrimitiveType.class.getSimpleName())
-				&& !type.getClass().getSimpleName().equals(Constructor.class.getSimpleName())){
-			hashSet.add(type);
-		}
-		
+
 		for(LocalVariable localVariable: this.localVariables){
-			if(localVariable.getType().getClass().getSimpleName().equals(PrimitiveType.class.getSimpleName()) == true){
-				// DO Nothing
-			}
-			else if(localVariable.getType().getClass().getSimpleName().equals(ParameterizedType.class.getSimpleName()) == true){
+			
+			if(localVariable.getType() instanceof ParameterizedType){
 				ParameterizedType aux = (ParameterizedType)localVariable.getType();
 				hashSet.addAll(aux.argumentsElegibleForCBO());
 			}
-			else{
+			else if((localVariable.getType() instanceof PrimitiveType) == false){
 				hashSet.add(localVariable.getType());
 			}
 		}
 		 
+		
+		return hashSet;
+		
+	}
+	
+	public Set<Entity> calcCBOreturnAndParameters(){
+		
+		Set<Entity> hashSet = new HashSet<Entity>();
+		
+		if((type instanceof PrimitiveType) == false
+				&& (type instanceof Constructor) == false){
+			hashSet.add(type);
+		}
+		
 		for(Parameter parameter: this.parameters){
-			if(parameter.getType().getClass().getSimpleName().equals(PrimitiveType.class.getSimpleName()) == true){
-				//do nothing
-			}
-			else if(parameter.getType().getClass().getSimpleName().equals(ParameterizedType.class.getSimpleName()) == true){
+			if(parameter.getType() instanceof ParameterizedType){
 				ParameterizedType aux = (ParameterizedType)parameter.getType();
 				hashSet.addAll(aux.argumentsElegibleForCBO());
 			}
-			else {
+			else if((parameter.getType() instanceof PrimitiveType) == false) {
 				hashSet.add(parameter.getType());
 			}
 		}
 		
 		return hashSet;
 		
-	}
+	} 
+	
+	
 	public ArrayList<Invocation> getListInvocation() {
 		return invocations;
 	}

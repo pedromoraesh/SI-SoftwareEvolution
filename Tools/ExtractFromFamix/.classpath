@@ -4,6 +4,7 @@
 	<classpathentry kind="src" path="testNew"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/commons-lang3-3.6.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-core-2.10.0.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="C:/Users/Pedro Henrique/Documents/Workspace/ExtractFromFamix/lib/commons-collections4-4.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Pedro Henrique/Documents/Workspace/ExtractFromFamix/lib/guava-23.5-jre.jar"/>

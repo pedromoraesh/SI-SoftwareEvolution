@@ -1,0 +1,9 @@
+A-io.undertow.server.protocol.framed.AbstractFramedStreamSourceChannel.close();R-io.undertow.websockets.core.StreamSourceFrameChannel.discard();
+A-io.undertow.attribute.ExchangeAttributes.transportProtocol();A-io.undertow.Handlers.header(io.undertow.server.HttpHandler, java.lang.String, io.undertow.attribute.ExchangeAttribute);
+A-io.undertow.websockets.core.protocol.version07.WebSocket07CloseFrameSourceChannel.CloseFrameValidatorChannelFunction.CloseFrameValidatorChannelFunction(io.undertow.websockets.core.protocol.version07.WebSocket07Channel);R-io.undertow.websockets.core.protocol.version07.UTF8Checker.UTF8Checker();
+A-io.undertow.websockets.core.protocol.version07.WebSocket07CloseFrameSourceChannel.CloseFrameValidatorChannelFunction.CloseFrameValidatorChannelFunction(io.undertow.websockets.core.protocol.version07.WebSocket07Channel);R-io.undertow.websockets.core.protocol.version07.UTF8Checker.UTF8Checker();
+R-io.undertow.server.HttpServerExchange.getConnection();
+R-io.undertow.server.HttpServerExchange.getConnection();
+A-io.undertow.attribute.ExchangeAttributes.constant(java.lang.String);
+A-io.undertow.attribute.ExchangeAttributes.constant(java.lang.String);
+A-io.undertow.attribute.ExchangeAttribute.readAttribute(io.undertow.server.HttpServerExchange);

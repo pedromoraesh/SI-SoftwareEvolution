@@ -9,5 +9,6 @@ public class LocalVariables {
 		int localC;
 		Integer localD;
 		Double localF;
+		Float localG;
 	}
 }

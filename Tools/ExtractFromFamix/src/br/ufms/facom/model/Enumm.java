@@ -3,6 +3,7 @@ package br.ufms.facom.model;
 public class Enumm extends Entity {
 	
 	private String modifier;
+	private int containerID;
 	
 	public int getId() {
 		return super.getId();
@@ -21,6 +22,12 @@ public class Enumm extends Entity {
 	}
 	public void setModifier(String modifier) {
 		this.modifier = modifier;
+	}
+	public int getContainerID() {
+		return containerID;
+	}
+	public void setContainerID(int containerID) {
+		this.containerID = containerID;
 	}
 	
 }

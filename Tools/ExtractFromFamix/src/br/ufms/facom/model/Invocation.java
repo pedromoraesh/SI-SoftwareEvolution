@@ -4,8 +4,8 @@ public class Invocation extends Entity {
 	
 	private String signature;
 	private int senderID;
-	private int recieverID;
-	private Entity reciever;
+	private int candidatesID;
+	private Entity candidate;
 
 	public String getSignature() {
 		return signature;
@@ -19,16 +19,16 @@ public class Invocation extends Entity {
 	public void setSenderID(int sender) {
 		this.senderID = sender;
 	}
-	public int getRecieverID() {
-		return recieverID;
+	public int getCandidateID() {
+		return candidatesID;
 	}
-	public void setRecieverID(int recieverID) {
-		this.recieverID = recieverID;
+	public void setCandidateID(int candidatesID) {
+		this.candidatesID = candidatesID;
 	}
-	public Entity getReciever() {
-		return reciever;
+	public Entity getCandidate() {
+		return candidate;
 	}
-	public void setReciever(Entity reciever) {
-		this.reciever = reciever;
+	public void setCandidate(Entity candidate) {
+		this.candidate = candidate;
 	}
 }

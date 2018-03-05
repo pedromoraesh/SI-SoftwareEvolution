@@ -18,14 +18,12 @@ public class ParameterizableClass extends Container {
 		Set<Entity> hashSet = new HashSet<Entity>();
 		
 		for(Attribute attribute: listAttributes){
-			if(attribute.getType().getClass().getSimpleName().equals(PrimitiveType.class.getSimpleName()) == true){
-				//DO nothing
-			}
-			else if(attribute.getType().getClass().getSimpleName().equals(ParameterizedType.class.getSimpleName()) == true){
+			if(attribute.getType().getClass().getSimpleName().equals(ParameterizedType.class.getSimpleName()) == true){
 				ParameterizedType aux = (ParameterizedType)attribute.getType();
 				hashSet.addAll(aux.argumentsElegibleForCBO());
 			}
-			else{
+			else if(attribute.getType().getClass().getSimpleName().equals(PrimitiveType.class.getSimpleName()) == false
+					&& attribute.getType().getClass().getSimpleName().equals(ParameterizedType.class.getSimpleName()) == false) {
 				hashSet.add(attribute.getType());
 			}
 			
@@ -49,7 +47,7 @@ public class ParameterizableClass extends Container {
 		}
 		
 		for(Method method: listMethods){
-			hashSet.addAll(method.calcCBO());
+			hashSet.addAll(method.calcCBOreturnAndParameters());
 		}
 		
 		return hashSet;

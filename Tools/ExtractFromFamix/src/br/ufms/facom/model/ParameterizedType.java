@@ -36,22 +36,25 @@ public class ParameterizedType extends Container {
 	}
 	public ArrayList<Entity> argumentsElegibleForCBO(){
 		ArrayList<Entity> aux = new ArrayList<Entity>();
-		for(Entity entity: this.arguments){
-			if(entity.getClass().getSimpleName().equals(PrimitiveType.class.getSimpleName()) == true){
-				//do nothing
+		
+		if(this.arguments != null){
+
+			for(Entity entity: this.arguments){
+				if(entity instanceof ParameterizedType){
+					ParameterizedType temp = (ParameterizedType)entity;
+					aux.add(temp.getpClass());
+					aux.addAll(temp.argumentsElegibleForCBO());
+				}
+				else if((entity instanceof PrimitiveType) == false){
+					aux.add(entity);	
+				}
+				
+				if(this.pClass != null){
+					aux.add(this.pClass);
+				}
+				
 			}
-			else if(entity.getClass().getSimpleName().equals(ParameterizedType.class.getSimpleName()) == true){
-				ParameterizedType temp = (ParameterizedType)entity;
-				aux.add(this.pClass);
-				aux.add(temp.getpClass());
-				aux.addAll(temp.argumentsElegibleForCBO());
-			}
-			else{
-				aux.add(entity);
-				aux.add(this.pClass);
-			}
-			
-		}
+		}	
 		
 		return aux;
 	}

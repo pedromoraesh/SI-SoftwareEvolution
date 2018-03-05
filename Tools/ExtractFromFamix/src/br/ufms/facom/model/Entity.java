@@ -38,13 +38,18 @@ public class Entity {
 		}
 		if(obj instanceof Entity){
 			Entity entity = (Entity)obj;
-			return entity.getFullName().equals(getFullName());
+			if(entity.getFullName() != null){
+				return entity.getFullName().equals(getFullName());
+			}
 		}
 		return false;
 	}
 	
 	@Override
 	public int hashCode(){
+		if(this.fullName == null){
+			return 0;
+		}
 		return this.fullName.hashCode();
 	}
 	

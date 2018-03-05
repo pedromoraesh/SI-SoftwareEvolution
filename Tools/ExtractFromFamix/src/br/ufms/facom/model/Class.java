@@ -17,12 +17,12 @@ public class Class extends Container {
 		Set<Entity> hashSet = new HashSet<Entity>();
 		
 		for(Entity entity: listInternalClasses){
-			if(entity.getClass().getSimpleName().equals(Class.class.getSimpleName())){
+			if(entity instanceof Class){
 				Class temp = (Class)entity;
 				hashSet.addAll(temp.calculateCBO());
 				hashSet.add(temp);
 			}
-			else if(entity.getClass().getSimpleName().equals(ParameterizableClass.class.getSimpleName())){
+			else if(entity instanceof ParameterizableClass){
 				ParameterizableClass temp = (ParameterizableClass)entity;
 				hashSet.addAll(temp.calculateCBO());
 				hashSet.add(temp);
@@ -30,31 +30,26 @@ public class Class extends Container {
 			}
 		}
 		
-//		for(Method method: listMethods){
-//			hashSet.addAll(method.calcCBO());	
-//		}
+		for(Method method: listMethods){
+			hashSet.addAll(method.calcCBOreturnAndParameters());	
+		}
 		
 		if(this.superClass != null){
 			hashSet.add(this.superClass);
 		}
 		
 		for(Attribute attribute: listAttributes){
-			if(attribute.getType().getClass().getSimpleName().equals(PrimitiveType.class.getSimpleName()) == true){
-				//DO nothing
-			}
-			else if(attribute.getType().getClass().getSimpleName().equals(ParameterizedType.class.getSimpleName()) == true){
+
+			if(attribute.getType() instanceof ParameterizedType 
+					&& (attribute.getType() instanceof PrimitiveType) == false){
 				ParameterizedType aux = (ParameterizedType)attribute.getType();
 				hashSet.addAll(aux.argumentsElegibleForCBO());
 			}
-			else{
+			else if((attribute.getType() instanceof PrimitiveType) == false){
 				hashSet.add(attribute.getType());
 			}
 			
 		}
-
-//		for(Entity entidade: hashSet){
-//			System.out.println(entidade.getName());
-//		}
 
 		return hashSet;
 	}	

@@ -12,6 +12,7 @@ public class ClassWithInvocations {
 	String otherString = string.trim();
 	Long forNewCBO;
 	Double forNewwCBO;
+	Integer testDiff;
 	
 	int a = methods.testPublicMethodPrimitiveReturnWithParameters(" ", tAttributes);
 		

@@ -13,19 +13,29 @@ public class TestMethods {
 	public String teste2;
 	public Map<Set<TestAttributesWithParamaterizableClass>, Double> teste3;
 	public ClassWithInvocations teste4 = new ClassWithInvocations();
+	public Long testeDiff1;
+	public Double testeDiff2;
 	
 	
 	private void testPrivateMethodWithoutParameter(){
 		teste1 = teste2.intern();
-		teste2 = teste1.trim();
 		Long abc;
-		String abcd;
-		Double localB;
+		String abcd = "";
+		Double localB = null;
+		localB.doubleValue();
+		Integer testDiffA;
+		Float testDiffB = null;
+		int a = testDiffB.hashCode();
+		abcd = abcd.trim();
 		
 	}
 	private void testPrivateMethodWithParameters(String a, Float b, Long c){
 		teste1 = teste2.toLowerCase();
 		teste2 = teste1.toUpperCase();
+		String testDiffC;
+		Long testDiffD;
+		ClassWithInvocations testDiffE;
+		a = a.trim();
 		
 	}
 	
