@@ -31,6 +31,7 @@ public class Model {
 	private ArrayList<ParameterizableClass> listPClass = new ArrayList<ParameterizableClass>();
 	private ArrayList<Method> listMethods;
 	private ArrayList<Invocation> listInvocations;
+	private String hash;
 
 	private void relationship(ArrayList<Method> listMethods, ArrayList<Invocation> listInvocations,
 			ArrayList<Type> listTypes, ArrayList<Attribute> listAttributes,
@@ -970,18 +971,24 @@ public class Model {
 
 	private ArrayList<Class> doInheritance(ArrayList<Class> listClasses, ArrayList<Inheritance> listInheritance,
 			ArrayList<ParameterizableClass> listPClass){
+		
+		ArrayList<Entity> temp = new ArrayList<Entity>();
 
 		for(Inheritance inheritance: listInheritance){
 			for(Class classe: listClasses){
 				if(classe.getId() == inheritance.getSubClassID()){
 					for(Class classe2 : listClasses){
 						if(classe2.getId() == inheritance.getSuperClassID()){
-							classe.setSuperClass(classe2);
+							temp = classe.getSuperClass();
+							temp.add(classe2);
+							classe.setSuperClass(temp);
 						}
 					}
 					for(ParameterizableClass pClass: listPClass){
 						if(pClass.getId() == inheritance.getSuperClassID()){
-							classe.setSuperClass(pClass);
+							temp = classe.getSuperClass();
+							temp.add(pClass);
+							classe.setSuperClass(temp);
 						}
 					}
 				}
@@ -993,12 +1000,16 @@ public class Model {
 				if(pClass.getId() == inheritance.getSubClassID()){
 					for(Class classe2 : listClasses){
 						if(classe2.getId() == inheritance.getSuperClassID()){
-							pClass.setSuperClass(classe2);
+							temp = pClass.getSuperClass();
+							temp.add(classe2);
+							pClass.setSuperClass(temp);
 						}
 					}
 					for(ParameterizableClass pClasse: listPClass){
 						if(pClasse.getId() == inheritance.getSuperClassID()){
-							pClass.setSuperClass(pClasse);
+							temp = pClass.getSuperClass();
+							temp.add(pClasse);
+							pClass.setSuperClass(temp);
 						}
 					}
 				}
@@ -1563,6 +1574,14 @@ public class Model {
 
 		public void setInvocations(ArrayList<Invocation> listInvocations) {
 			this.listInvocations = listInvocations;
+		}
+
+		public String getHash() {
+			return hash;
+		}
+
+		public void setHash(String hash) {
+			this.hash = hash;
 		}
 
 	}

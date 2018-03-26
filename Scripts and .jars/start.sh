@@ -1,32 +1,44 @@
 #!/bin/bash
 
-dir="C:\Users\Pedro Henrique\Documents\IC\Clones e Scripts"
+dir="$1"
 
-while read repo; 
-do
+ while read -r repo || [[ -n "$repo" ]]
+ do
   git clone $repo
 
-done < repos.txt
+ done < repos.txt
 
-for repo in $(ls -d */ | cut -f1 -d'/')
-do
-	echo $dir\\$repo >> paths.txt
+ for repo in $(ls -d */ | cut -f1 -d'/')
+ do
+ 	echo $dir\\$repo >> paths.txt
 
-done
+ done
 
-bash takeLogs.sh
+ bash takeLogs.sh
 
-bash takeDiff.sh
+ bash takeDiff.sh
 
-bash takeMSEFiles.sh
+ bash takeMSEFiles.sh
 
-bash filter-diffNoImport.sh
+ bash filter-diffNoImport.sh
+
+ while read -r dir || [[ -n "$dir" ]]
+ do
+
+  correctPath=$(echo "$dir" | tr '\\' '//')
+
+  echo "$correctPath"
+
+  java -jar FormatImports.jar "$correctPath"
+
+done < paths.txt
+
+echo "(FormatImport) Imports formated"
 
 bash runExtractFromFamix.sh
 
 bash runRefDiff.sh
 
-bash runDeprecatedFindings.sh
+bash formatRefDiff.sh
 
-
-
+bash uknownCount.sh

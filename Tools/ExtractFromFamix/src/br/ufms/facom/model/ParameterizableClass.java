@@ -11,7 +11,7 @@ public class ParameterizableClass extends Container {
 	private ArrayList<Method> listMethods = new ArrayList<Method>();
 	private ArrayList<Entity> listInternalClasses = new ArrayList<Entity>();
 	private ArrayList<Attribute> listAttributes = new ArrayList<Attribute>();
-	private Entity superClass;
+	private ArrayList<Entity> superClass = new ArrayList<Entity>();
 	
 	public Set<Entity> calculateCBO(){
 		
@@ -43,7 +43,7 @@ public class ParameterizableClass extends Container {
 		}
 		
 		if(this.superClass != null){
-			hashSet.add(superClass);
+			hashSet.addAll(superClass);
 		}
 		
 		for(Method method: listMethods){
@@ -92,11 +92,11 @@ public class ParameterizableClass extends Container {
 		this.listInternalClasses = listInternalClasses;
 	}
 
-	public Entity getSuperClass() {
+	public ArrayList<Entity> getSuperClass() {
 		return superClass;
 	}
 
-	public void setSuperClass(Entity superClass) {
+	public void setSuperClass(ArrayList<Entity> superClass) {
 		this.superClass = superClass;
 	}
 

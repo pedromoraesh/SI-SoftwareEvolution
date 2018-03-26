@@ -7,9 +7,9 @@ import java.io.PrintWriter;
 
 public class ExtractData {
 	
-	public void export(String path, String content, String fileName){
+	public void export(String path, String content){
 		File dir = new File(path);
-		File arq = new File(dir, fileName);		
+		File arq = new File(dir, "FormatedImports.txt");		
 	
         
         try {

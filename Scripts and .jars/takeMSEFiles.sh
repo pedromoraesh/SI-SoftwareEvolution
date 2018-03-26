@@ -7,6 +7,8 @@ while read -r directory || [[ -n "$directory" ]]
 
     cd "$directory"
 
+    rm -rf msefiles
+
     mkdir -p msefiles
 
     while read -r hash || [[ -n "$hash" ]]

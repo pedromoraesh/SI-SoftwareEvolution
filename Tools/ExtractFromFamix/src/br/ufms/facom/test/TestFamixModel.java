@@ -1,6 +1,4 @@
 package br.ufms.facom.test;
-import static org.junit.Assert.assertEquals;
-
 import java.io.IOException;
 import java.util.Map;
 
@@ -10,10 +8,10 @@ import org.junit.Test;
 import br.ufms.facom.Diff;
 import br.ufms.facom.FormatData;
 import br.ufms.facom.Model;
-import br.ufms.facom.model.Class;
 import br.ufms.facom.model.FamixEntity;
-import br.ufms.facom.model.Invocation;
-import br.ufms.facom.model.Method;
+import br.ufms.facom.model.ParameterizableClass;
+import br.ufms.facom.model.Class;
+import br.ufms.facom.model.Entity;
 
 public class TestFamixModel {
 	
@@ -23,30 +21,40 @@ public class TestFamixModel {
 
 	@Before
 	public void setUp() throws IOException{
-//		String pathNew = "C:/Users/Pedro Henrique/Documents/Workspace/ExtractFromFamix/testNew/"
-//				+ "testNew.mse";
-//		String pathOld = "C:/Users/Pedro Henrique/Documents/Workspace/ExtractFromFamix/testOld/"
-//				+ "testOld.mse";
-		String pathNew = "C:/Users/Pedro Henrique/Documents/IC/Clones e Scripts/undertow/undertowNew.mse";
-		String pathOld = "C:/Users/Pedro Henrique/Documents/IC/Clones e Scripts/undertow/undertowOld.mse";
-//		String pathNew = "C:/Users/Pedro Henrique/Documents/IC/Clones e Scripts/tomcat70/tomcat70new.mse";
-//		String pathOld = "C:/Users/Pedro Henrique/Documents/IC/Clones e Scripts/tomcat70/tomcat70old.mse";
+		String pathNew = "C.../msefiles/spatial4j_4ec61cc4.mse";
+		String pathOld = "C.../msefiles/spatial4j_74a94a1b.mse";
+
 		Map<Integer, FamixEntity> mapOld = FormatData.mseToMap(pathOld);
 		Map<Integer, FamixEntity> mapNew = FormatData.mseToMap(pathNew);
 		this.modelOld = new Model();
 		this.modelNew = new Model();
 		modelOld.createObjects(mapOld);
 		modelNew.createObjects(mapNew);
-		diff.setPath("C:/Users/Pedro Henrique/Documents/Workspace/ExtractFromFamix/results/");
+		diff.setPath("C.../results/");
 
 	}
 	
 	@Test
 	public void testDiff(){
 		
-		diff.diffCBO(modelOld, modelNew);
-		diff.diffMethods(modelOld, modelNew);	
-		diff.diffInvocations(modelOld, modelNew);
+//		diff.diffCBO(modelOld, modelNew);
+//		diff.diffMethods(modelOld, modelNew);	
+//		diff.diffInvocations(modelOld, modelNew);
+		
+		ParameterizableClass pClass = modelOld.findParameterizableClass("com.spatial4j.core.shape.BaseShape");
+		
+		System.out.println(pClass.getFullName());
+		for(Entity entity: pClass.getSuperClass()){
+			System.out.println(entity.getFullName());
+		}
+		
+		System.out.println("-----------------------");
+//
+//		System.out.println(classee.getFullName());
+//		for(Entity entity: classee.getSuperClass()){
+//			System.out.println(entity.getFullName());
+//		}
+		
 		
 //		for(Invocation invocation: modelNew.getInvocations()){
 //			if(invocation.getFullName() != null)

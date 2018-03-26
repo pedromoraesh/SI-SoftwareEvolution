@@ -8,6 +8,7 @@ do
 	dir="${path%/*}"
 	correctPath=$(echo "$dir" | tr '//' '\\')
 	project=$(basename "$path")
+	echo $correctPath
 
 	i=$(($i+1))
 	echo $project,$i
@@ -54,10 +55,10 @@ do
 
 					#echo "Project --> $project"
 					mkdir -p $project/imports
-					echo "$path, $commit, $noimport $2" >> "$correctPath\\$project\\imports\\$project.txt" #....Diff/"gitProjectNoImport.txt"
+					echo "$path, $commit, $noimport $2" >> "$correctPath\\imports\\imports.txt" #....Diff/"gitProjectNoImport.txt"
 				fi
 		fi
-	done < "$correctPath\\$project\\$project.txt"
+	done < "$correctPath\\gitDiff.txt"
 
 	echo "Job Finished for $project"
 

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang3.StringUtils;
+
 import br.ufms.facom.model.Class;
 import br.ufms.facom.model.Entity;
 import br.ufms.facom.model.Invocation;
@@ -42,7 +44,9 @@ public class Diff {
 					contentToExport = contentToExport + extractDiff(diff, classFromNewVersion, "R");	
 				}
 				if(!contentToExport.equals("")){
-					extractor.export(path, contentToExport, "Transaction-CBO.txt");
+					contentToExport = StringUtils.removeEnd(contentToExport, ";");
+					extractor.export(path, contentToExport , "Transaction-CBO.txt");
+					extractor.export(path, (oldVersion.getHash() + " and " + newVersion.getHash() + ";" + classFromNewVersion.getFullName() + ";" + contentToExport), "Transaction-CBO(log).txt");
 				}
 			}
 		}
@@ -61,7 +65,9 @@ public class Diff {
 					contentToExportParameterizable += extractDiff(diff, classFromNewVersion, "R");		
 				}			
 				if(!contentToExportParameterizable.equals("")){
+					contentToExportParameterizable = StringUtils.removeEnd(contentToExportParameterizable, ";");
 					extractor.export(path, contentToExportParameterizable, "Transaction-CBO.txt");
+					extractor.export(path, (oldVersion.getHash() + " and " + newVersion.getHash() + ";" + classFromNewVersion.getFullName() + contentToExportParameterizable), "Transaction-CBO(log).txt");
 				}
 			}
 		}
@@ -97,7 +103,10 @@ public class Diff {
 							contentToExport = contentToExport + extractDiff(diff, methodFromNewVersion, "R");	
 						}
 						if(!contentToExport.equals("")){
+							contentToExport = StringUtils.removeEnd(contentToExport, ";");
 							extractor.export(path, contentToExport, "Transaction-CBO.txt");
+							extractor.export(path, (oldVersion.getHash() + " and " + newVersion.getHash() + ";" + methodFromNewVersion.getFullName() + "-" + contentToExport), "Transaction-CBO(log).txt");
+							
 						}
 					}
 				}
@@ -131,7 +140,10 @@ public class Diff {
 							contentToExport = contentToExport + extractDiffInvocation(diff, methodFromNewVersion, "R");	
 						}
 						if(!contentToExport.equals("")){
+							contentToExport = StringUtils.removeEnd(contentToExport, ";");
 							extractor.export(path, contentToExport, "Transaction-Invoc.txt");
+							extractor.export(path, (oldVersion.getHash() + " and " + newVersion.getHash() + ";" + methodFromNewVersion.getFullName() + "-" + contentToExport), "Transaction-Invoc(log).txt");
+							
 						}
 						
 					}

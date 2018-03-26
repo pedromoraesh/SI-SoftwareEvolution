@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_COLOR_BURNPeer;
-
 public class Method extends Container {
 	
 	

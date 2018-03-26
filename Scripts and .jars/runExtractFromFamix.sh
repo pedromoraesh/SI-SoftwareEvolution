@@ -3,15 +3,15 @@
 
 echo "Running ExtractFromFamix"
 
-while read -r directory || [[ -n "$directory" ]]
+while read -r dir || [[ -n "$dir" ]]
 	do
 
-    cd "$directory"
+	correctPath=$(echo "$dir" | tr '\\' '//')
 
-      java -jar ../ExtractFromFamix.jar "$directory"
+    java -jar ExtractFromFamix.jar "$correctPath"
 
-    echo "(ExtractFromFamix) Done for "basename $directory
-    
-    cd ..
+    repository=basename $directory
+
+    echo "(ExtractFromFamix) Done for $repository"
 
 	done < "paths.txt"

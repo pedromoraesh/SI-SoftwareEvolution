@@ -6,7 +6,7 @@ while read -r directory || [[ -n "$directory" ]]
 	do
 		cd "$directory"
 
-		git log --pretty=%h --first-parent  > log.txt
+		git log --reverse --pretty=%h --first-parent > log.txt
 
 		echo "Job done for "basename $directory
 

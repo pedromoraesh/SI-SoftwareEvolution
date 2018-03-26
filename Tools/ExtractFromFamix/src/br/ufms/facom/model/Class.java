@@ -8,7 +8,7 @@ public class Class extends Container {
 
 	private ArrayList<Method> listMethods = new ArrayList<Method>();
 	private ArrayList<Attribute> listAttributes = new ArrayList<Attribute>();
-	private Entity superClass;
+	private ArrayList<Entity> superClass = new ArrayList<Entity>();
 	private int containerID;
 	private ArrayList<Entity> listInternalClasses = new ArrayList<Entity>();
 	
@@ -35,7 +35,7 @@ public class Class extends Container {
 		}
 		
 		if(this.superClass != null){
-			hashSet.add(this.superClass);
+			hashSet.addAll(this.superClass);
 		}
 		
 		for(Attribute attribute: listAttributes){
@@ -79,10 +79,10 @@ public class Class extends Container {
 	public void setAttributes(ArrayList<Attribute> listFields) {
 		this.listAttributes = listFields;
 	}
-	public Entity getSuperClass() {
+	public ArrayList<Entity> getSuperClass() {
 		return superClass;
 	}
-	public void setSuperClass(Entity superClass) {
+	public void setSuperClass(ArrayList<Entity> superClass) {
 		this.superClass = superClass;
 	}
 	public int getContainerID() {

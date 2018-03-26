@@ -1,53 +1,69 @@
 package br.ufms.facom;
 
-import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Map;
-import java.util.logging.LogManager;
+import java.util.Scanner;
 
-import org.apache.logging.log4j.core.Logger;
+import org.apache.commons.lang3.StringUtils;
 
 import br.ufms.facom.model.FamixEntity;
 
 public class Main {
 
-
+	
 	public static void main(String[] args) throws IOException {
 		
-		String pathName = args[0];
 		
+		String pathName = args[0];
 		Model modelOld = new Model();
 		Model modelNew = new Model();
 		
+		String repository = StringUtils.substringAfterLast(pathName, "/");
+			
 		Map<Integer, FamixEntity> mapOld;
 		Map<Integer, FamixEntity> mapNew;
 		
 		Diff diff = new Diff();
-		File directory = new File(pathName + "/msefiles");
-		String[] files = directory.list();
 		
+		String hashOld = "";
+		String hashNew = "";
 		
-		for (int i = 0; i < files.length; i++ ){
+		Scanner in = new Scanner(new FileReader(pathName + "/log.txt"));
+		
+		hashOld = in.nextLine();
+		
+		while(in.hasNextLine()){
 			
-			String oldMSEFile = files[i];
-			if(i+1 < files.length){
-				String newMSEFile = files[i+1];
-				mapOld = FormatData.mseToMap(pathName + "/msefiles/" + oldMSEFile);
-				mapNew = FormatData.mseToMap(pathName + "/msefiles/" + newMSEFile);
+			
+			hashNew = in.nextLine();
+			
+			
+				System.out.println("Getting diff from " + hashOld + " to " + hashNew);;
+				mapOld = FormatData.mseToMap(pathName + "/msefiles/" + repository + "_" + hashOld + ".mse");
+				mapNew = FormatData.mseToMap(pathName + "/msefiles/" + repository + "_" + hashNew + ".mse");
+				
+				modelOld.setHash(hashOld);
+				modelNew.setHash(hashNew);
 				
 				modelOld.createObjects(mapOld);
 				modelNew.createObjects(mapNew);
+				
 				diff.setPath(pathName + "/diffResults/");
 				diff.diff(modelOld, modelNew);
-			}
-			
-			
-			
+				
+			hashOld = hashNew;
 			
 			
 		}
 		
+		in.close();
+		
+		System.out.println("Diff done");
+		
 	}
+	
+	
 
 
 }
