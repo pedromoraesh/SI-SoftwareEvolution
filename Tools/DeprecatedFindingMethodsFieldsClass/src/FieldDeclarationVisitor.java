@@ -1,5 +1,7 @@
 
 
+import java.util.List;
+
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.FieldDeclaration;
 import org.eclipse.jdt.core.dom.IAnnotationBinding;
@@ -45,10 +47,9 @@ public class FieldDeclarationVisitor extends ASTVisitor {
 		}
 		
 		if (!privateModifier) {
-			//List<VariableDeclarationFragment> fragments = node.fragments();
-			VariableDeclarationFragment variableDeclarationFragment = (VariableDeclarationFragment) node.fragments().get(0);
-			if (variableDeclarationFragment != null) {
-				//for (VariableDeclarationFragment variableDeclarationFragment : fragments) {
+			List<VariableDeclarationFragment> fragments = node.fragments();
+			if (fragments != null && !fragments.isEmpty()) {
+				for (VariableDeclarationFragment variableDeclarationFragment : fragments) {
 					if (variableDeclarationFragment.resolveBinding() != null) {
 						if (variableDeclarationFragment.resolveBinding().isDeprecated()) {
 							numberDeprecateds++;
@@ -65,35 +66,64 @@ public class FieldDeclarationVisitor extends ASTVisitor {
 										node.getJavadoc().toString().toLowerCase().contains("should be used")||
 										node.getJavadoc().toString().toLowerCase().contains("moved") ||
 										node.getJavadoc().toString().toLowerCase().contains("see")) {
-									numberDeprecatedWithRelevantMessages++;
+									
 									printJavaDocWithRecomendation(variableDeclarationFragment, node);
 									
-									
 								}
-								else{
-									printJavaDocWithoutRecomendation(variableDeclarationFragment);
+								else {
+									printJavaDocWithoutRecomendation(variableDeclarationFragment, node);
 								}
+							}
+							else {
+								if(containsJavaDoc(node)) {
+									if (node.getJavadoc().toString().toLowerCase().contains("use") ||
+											node.getJavadoc().toString().toLowerCase().contains("replace") ||
+											node.getJavadoc().toString().toLowerCase().contains("refer") ||
+											node.getJavadoc().toString().toLowerCase().contains("equivalent") || 
+											node.getJavadoc().toString().toLowerCase().contains("@link") || 
+											node.getJavadoc().toString().toLowerCase().contains("@see") ||
+											node.getJavadoc().toString().toLowerCase().contains("@code") ||
+											node.getJavadoc().toString().toLowerCase().contains("instead") ||
+											node.getJavadoc().toString().toLowerCase().contains("should be used")||
+											node.getJavadoc().toString().toLowerCase().contains("moved") ||
+											node.getJavadoc().toString().toLowerCase().contains("see")) {
+							
+										printJavaDocWithRecomendation(variableDeclarationFragment, node);
+										
+									}
+								}
+								else {
+									printJavaDocWithoutRecomendation(variableDeclarationFragment, node);
+								}
+								
 							}
 							
-							else if (containsAnnotation(variableDeclarationFragment, "Deprecated")) {
-								printJavaDocWithoutRecomendation(variableDeclarationFragment);
-							}
 						}
-						numberFields++;
+						
 					}
-				//}
+				}
 			}
 		}
 		return super.visit(node);
 	}
+		
 
 
-	private boolean containsAnnotation(VariableDeclarationFragment node, String annotation) {
-		for (IAnnotationBinding annotationBinding : node.resolveBinding().getAnnotations()) {
-			if (annotationBinding.getName().equals(annotation)) {
-				return true;
-			}
-		}
+//	private boolean containsAnnotation(VariableDeclarationFragment node, String annotation) {
+//		for (IAnnotationBinding annotationBinding : node.resolveBinding().getAnnotations()) {
+//			if (annotationBinding.getName().equals(annotation)) {
+//				return true;
+//			}
+//		}
+//		return false;
+//	}
+	
+	private boolean containsJavaDoc(FieldDeclaration node) {
+		if (node.getJavadoc() != null && 
+				node.getJavadoc().tags() != null &&
+				!node.getJavadoc().tags().isEmpty()) {
+			return true;
+		} 
 		return false;
 	}
 	
@@ -113,20 +143,21 @@ public class FieldDeclarationVisitor extends ASTVisitor {
 	
 	public void printJavaDocWithRecomendation(VariableDeclarationFragment variable, FieldDeclaration node){
 		ExtractData extract = new ExtractData();
-		
+		String javadoc = node.getJavadoc().toString().replaceAll("\n", "").replaceAll("\r", "");
+		javadoc = javadoc.substring(javadoc.indexOf(" @deprecated")+1);
 		String text = variable.resolveBinding().getDeclaringClass().getQualifiedName() + ";" 
 					+ variable.getName() + ";" 
-					+ hash + ";" + "Field;" + node.getJavadoc().toString();
-		extract.export(path, text);
+					+ "Field;" + javadoc;
+		extract.export(this.path, text);
 	}
 	
-	public void printJavaDocWithoutRecomendation(VariableDeclarationFragment variable){
+	public void printJavaDocWithoutRecomendation(VariableDeclarationFragment variable, FieldDeclaration node){
 		ExtractData extract = new ExtractData();
 		
 		String text = variable.resolveBinding().getDeclaringClass().getQualifiedName() + ";" 
 					+ variable.getName() + ";" 
-					+ hash + ";" + "Field;";
-		extract.export(path, text);
+					+ "Field;";
+		extract.exportWihoutMsg(this.path, text);
 	}
 
 

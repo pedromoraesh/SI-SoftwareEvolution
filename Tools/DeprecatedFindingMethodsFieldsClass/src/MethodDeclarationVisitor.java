@@ -1,4 +1,5 @@
 import org.eclipse.jdt.core.dom.ASTVisitor;
+import org.eclipse.jdt.core.dom.FieldDeclaration;
 import org.eclipse.jdt.core.dom.IAnnotationBinding;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.Modifier;
@@ -39,11 +40,30 @@ public class MethodDeclarationVisitor extends ASTVisitor{
 			}
 			
 		}
-		if (!privateModifier && node.resolveBinding() != null && node.resolveBinding().isDeprecated()) {
-			numberDeprecateds++;
+		if (!privateModifier && node.resolveBinding() != null && node.resolveBinding().isDeprecated()) {		
 			if (containsTagJavaDoc(node, "@deprecated")) {
-				numberDeprecatedsWithMessage++;
-				
+				if (node.getJavadoc().toString().toLowerCase().contains("use") ||
+						node.getJavadoc().toString().toLowerCase().contains("replace") ||
+						node.getJavadoc().toString().toLowerCase().contains("refer") ||
+						node.getJavadoc().toString().toLowerCase().contains("equivalent") || 
+						node.getJavadoc().toString().toLowerCase().contains("@link") || 
+						node.getJavadoc().toString().toLowerCase().contains("@see") ||
+						node.getJavadoc().toString().toLowerCase().contains("@code") ||
+						node.getJavadoc().toString().toLowerCase().contains("instead") ||
+						node.getJavadoc().toString().toLowerCase().contains("should be used")||
+						node.getJavadoc().toString().toLowerCase().contains("moved") ||
+						node.getJavadoc().toString().toLowerCase().contains("see")) {					
+						
+						printJavaDocWithRecomendation(node);
+						
+					}
+					else{
+						printJavaDocWithoutRecomendation(node);
+					}
+					
+			}
+			else {
+				if(containsJavaDoc(node)) {
 					if (node.getJavadoc().toString().toLowerCase().contains("use") ||
 							node.getJavadoc().toString().toLowerCase().contains("replace") ||
 							node.getJavadoc().toString().toLowerCase().contains("refer") ||
@@ -55,32 +75,41 @@ public class MethodDeclarationVisitor extends ASTVisitor{
 							node.getJavadoc().toString().toLowerCase().contains("should be used")||
 							node.getJavadoc().toString().toLowerCase().contains("moved") ||
 							node.getJavadoc().toString().toLowerCase().contains("see")) {
-						numberDeprecatedWithRelevantMessages++;						
-						
+			
 						printJavaDocWithRecomendation(node);
 						
 					}
-					else{
-						printJavaDocWithoutRecomendation(node);
-					}
-					
+				}
+				else {
+					printJavaDocWithoutRecomendation(node);
+				}
+				
 			}
-			else if(containsAnnotation(node, "Deprecated")) {
-				numberDeprecatedsWithAnnotation++;
-				printJavaDocWithoutRecomendation(node);
-			}
+			
 	
 		}
 		numberMethods++;
 		return super.visit(node);
 	}
 	
-	private boolean containsAnnotation(MethodDeclaration node, String annotation) {
-		for (IAnnotationBinding annotationBinding : node.resolveBinding().getAnnotations()) {
-			if (annotationBinding.getName().equals(annotation)) {
-				return true;
-			}
-		}
+//	private boolean containsAnnotation(MethodDeclaration node, String annotation) {
+//		System.out.println(node.resolveBinding().getMethodDeclaration().toString());
+//		System.out.println(node.resolveBinding().getDeclaringClass().getQualifiedName());
+//		for (IAnnotationBinding annotationBinding : node.resolveBinding().getAnnotations()) {	
+//			if (annotationBinding.getName().equals(annotation)) {
+//				return true;
+//			}
+//		}
+//		
+//		return false;
+//	}
+	
+	private boolean containsJavaDoc(MethodDeclaration node) {
+		if (node.getJavadoc() != null && 
+				node.getJavadoc().tags() != null &&
+				!node.getJavadoc().tags().isEmpty()) {
+			return true;
+		} 
 		return false;
 	}
 	
@@ -101,9 +130,13 @@ public class MethodDeclarationVisitor extends ASTVisitor{
 	
 	public void printJavaDocWithRecomendation(MethodDeclaration node){
 		ExtractData extract = new ExtractData();
+		String[] temp = node.resolveBinding().getMethodDeclaration().toString().split(" ");
+		String javadoc = node.getJavadoc().toString().replaceAll("\n", "").replaceAll("\r", "");
+		javadoc = javadoc.substring(javadoc.indexOf(" @deprecated")+1);
+		String methodName = temp[2];
 		String text = node.resolveBinding().getDeclaringClass().getQualifiedName() + ";" 
-						+ node.getName() + ";" 
-						+ hash + ";" + "Method;" + node.getJavadoc().toString();
+						+ methodName + ";" 
+						+ "Method;" + javadoc;
 		extract.export(this.path, text);
 	}
 	
@@ -111,7 +144,7 @@ public class MethodDeclarationVisitor extends ASTVisitor{
 		ExtractData extract = new ExtractData();
 		String text = node.resolveBinding().getDeclaringClass().getQualifiedName() + ";" 
 						+ node.getName() + ";" 
-						+ hash + ";" + "Method;";
+						+ "Method;";
 		extract.exportWihoutMsg(this.path, text);
 	}
 	

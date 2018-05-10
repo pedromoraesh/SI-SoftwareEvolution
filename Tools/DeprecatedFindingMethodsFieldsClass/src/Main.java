@@ -101,8 +101,8 @@ public class Main {
 	
 	public static void main(String[] args) throws IOException {
 		
-		globalPath = args[0];//"C:/Users/Pedro Henrique/Documents/IC/Clones e Scripts/Android-Universal-Image-Loader";
-		hash = args[1];//"9da1b1a";
+		globalPath = "D:\\Usuarios\\FACOM\\Documents\\Projetos\\IC\\platform_frameworks_base";
+		hash = "teste";
 		
 		parseFilesInDir(new File(globalPath), valuesTotal);
 		System.out.println("Data exported to " + globalPath + " with success");

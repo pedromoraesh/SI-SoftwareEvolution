@@ -1,4 +1,5 @@
 import org.eclipse.jdt.core.dom.ASTVisitor;
+import org.eclipse.jdt.core.dom.FieldDeclaration;
 import org.eclipse.jdt.core.dom.IAnnotationBinding;
 import org.eclipse.jdt.core.dom.Modifier;
 import org.eclipse.jdt.core.dom.TagElement;
@@ -62,9 +63,28 @@ public class TypeDeclarationVisitor extends ASTVisitor {
 						printJavaDocWithoutRecomendation(node);
 					}
 			}
-			else if(containsAnnotation(node, "Deprecated")) {
-				numberDeprecatedsWithAnnotation++;
-				printJavaDocWithoutRecomendation(node);
+			else {
+				if(containsJavaDoc(node)) {
+					if (node.getJavadoc().toString().toLowerCase().contains("use") ||
+							node.getJavadoc().toString().toLowerCase().contains("replace") ||
+							node.getJavadoc().toString().toLowerCase().contains("refer") ||
+							node.getJavadoc().toString().toLowerCase().contains("equivalent") || 
+							node.getJavadoc().toString().toLowerCase().contains("@link") || 
+							node.getJavadoc().toString().toLowerCase().contains("@see") ||
+							node.getJavadoc().toString().toLowerCase().contains("@code") ||
+							node.getJavadoc().toString().toLowerCase().contains("instead") ||
+							node.getJavadoc().toString().toLowerCase().contains("should be used")||
+							node.getJavadoc().toString().toLowerCase().contains("moved") ||
+							node.getJavadoc().toString().toLowerCase().contains("see")) {
+			
+						printJavaDocWithRecomendation(node);
+						
+					}
+				}
+				else {
+					printJavaDocWithoutRecomendation(node);
+				}
+				
 			}
 						
 		}
@@ -73,12 +93,21 @@ public class TypeDeclarationVisitor extends ASTVisitor {
 		return super.visit(node);
 	}
 	
-	private boolean containsAnnotation(TypeDeclaration node, String annotation) {
-		for (IAnnotationBinding annotationBinding : node.resolveBinding().getAnnotations()) {
-			if (annotationBinding.getName().equals(annotation)) {
-				return true;
-			}
-		}
+//	private boolean containsAnnotation(TypeDeclaration node, String annotation) {
+//		for (IAnnotationBinding annotationBinding : node.resolveBinding().getAnnotations()) {
+//			if (annotationBinding.getName().equals(annotation)) {
+//				return true;
+//			}
+//		}
+//		return false;
+//	}
+	
+	private boolean containsJavaDoc(TypeDeclaration node) {
+		if (node.getJavadoc() != null && 
+				node.getJavadoc().tags() != null &&
+				!node.getJavadoc().tags().isEmpty()) {
+			return true;
+		} 
 		return false;
 	}
 	
@@ -97,17 +126,19 @@ public class TypeDeclarationVisitor extends ASTVisitor {
 		return false;
 	}
 	public void printJavaDocWithRecomendation(TypeDeclaration node){
-		ExtractData extract = new ExtractData();						
+		ExtractData extract = new ExtractData();
+		String javadoc = node.getJavadoc().toString().replaceAll("\n", "").replaceAll("\r", "");
+		javadoc = javadoc.substring(javadoc.indexOf(" @deprecated")+1);
 		String text = node.resolveBinding().getBinaryName().toString() + ";" 
-						+ node.getName() + ";" + hash + ";" + "Type;" 
-						+ node.getJavadoc().toString();
+						+ node.getName() + ";" + "Type;" 
+						+ javadoc;
 		extract.export(path, text);
 	}
 	
 	public void printJavaDocWithoutRecomendation(TypeDeclaration node){
 		ExtractData extract = new ExtractData();
 		String text = node.resolveBinding().getBinaryName().toString() + ";" 
-				+ node.getName() + ";" + hash + ";" + "Type;";
+				+ node.getName() + ";" + "Type;";
 		extract.exportWihoutMsg(this.path, text);
 	}
 	
