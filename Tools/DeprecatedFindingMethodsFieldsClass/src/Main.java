@@ -32,7 +32,7 @@ public class Main {
 		options.put(JavaCore.COMPILER_SOURCE, JavaCore.VERSION_1_8);
 		options.put(JavaCore.COMPILER_CODEGEN_TARGET_PLATFORM,
 				JavaCore.VERSION_1_8);
-		 options.put(JavaCore.COMPILER_COMPLIANCE, JavaCore.VERSION_1_8);
+		options.put(JavaCore.COMPILER_COMPLIANCE, JavaCore.VERSION_1_8);
 		parser.setUnitName(source.getAbsolutePath());
 		
 		parser.setCompilerOptions(options);
@@ -40,9 +40,15 @@ public class Main {
 				true);
 		parser.setResolveBindings(true);
 		parser.setBindingsRecovery(true);
-
-		final CompilationUnit compilationUnit = (CompilationUnit) parser
-				.createAST(null);
+		final CompilationUnit compilationUnit;
+		try {
+			compilationUnit = (CompilationUnit) parser
+					.createAST(null);
+		} catch (Exception e) {
+			int[] retorno = {0,0,0,0,0,0};
+			return retorno;
+		}
+		
 		
 
 		FieldDeclarationVisitor visitorField = new FieldDeclarationVisitor(globalPath, hash);
@@ -82,7 +88,7 @@ public class Main {
 	public static void parseFilesInDir(File file, int[] values) throws IOException {
 		if (file.isFile()) {
 			if (file.getName().endsWith(".java")) {
-				
+				System.out.println(file.getAbsolutePath());
 				int[] line = parse(readFileToString(file.getAbsolutePath()), file);
 				values[0] += line[0];
 				values[1] += line[1];
@@ -94,15 +100,16 @@ public class Main {
 			}
 		} else {
 			for (File f : file.listFiles()) {
-				parseFilesInDir(f, valuesTotal);
+				parseFilesInDir(f, valuesTotal);				
+
 			}
 		}
 	}
 	
 	public static void main(String[] args) throws IOException {
 		
-		globalPath = "D:\\Usuarios\\FACOM\\Documents\\Projetos\\IC\\platform_frameworks_base";
-		hash = "teste";
+		globalPath = args[0];
+		hash = args[1];
 		
 		parseFilesInDir(new File(globalPath), valuesTotal);
 		System.out.println("Data exported to " + globalPath + " with success");
