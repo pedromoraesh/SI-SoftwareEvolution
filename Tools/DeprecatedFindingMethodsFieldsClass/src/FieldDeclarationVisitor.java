@@ -108,15 +108,6 @@ public class FieldDeclarationVisitor extends ASTVisitor {
 	}
 		
 
-
-//	private boolean containsAnnotation(VariableDeclarationFragment node, String annotation) {
-//		for (IAnnotationBinding annotationBinding : node.resolveBinding().getAnnotations()) {
-//			if (annotationBinding.getName().equals(annotation)) {
-//				return true;
-//			}
-//		}
-//		return false;
-//	}
 	
 	private boolean containsJavaDoc(FieldDeclaration node) {
 		if (node.getJavadoc() != null && 

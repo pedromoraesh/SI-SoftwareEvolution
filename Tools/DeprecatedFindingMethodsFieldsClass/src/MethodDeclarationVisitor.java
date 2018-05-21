@@ -92,17 +92,6 @@ public class MethodDeclarationVisitor extends ASTVisitor{
 		return super.visit(node);
 	}
 	
-//	private boolean containsAnnotation(MethodDeclaration node, String annotation) {
-//		System.out.println(node.resolveBinding().getMethodDeclaration().toString());
-//		System.out.println(node.resolveBinding().getDeclaringClass().getQualifiedName());
-//		for (IAnnotationBinding annotationBinding : node.resolveBinding().getAnnotations()) {	
-//			if (annotationBinding.getName().equals(annotation)) {
-//				return true;
-//			}
-//		}
-//		
-//		return false;
-//	}
 	
 	private boolean containsJavaDoc(MethodDeclaration node) {
 		if (node.getJavadoc() != null && 
@@ -130,12 +119,13 @@ public class MethodDeclarationVisitor extends ASTVisitor{
 	
 	public void printJavaDocWithRecomendation(MethodDeclaration node){
 		ExtractData extract = new ExtractData();
-		String[] temp = node.resolveBinding().getMethodDeclaration().toString().split(" ");
+		String methodName = node.resolveBinding().getDeclaringClass().getName().toString() + 
+							node.parameters().toString(); 
+		//Javadoc after @deprecated
 		String javadoc = node.getJavadoc().toString().replaceAll("\n", "").replaceAll("\r", "");
 		javadoc = javadoc.substring(javadoc.indexOf(" @deprecated")+1);
-		String methodName = temp[2];
 		String text = node.resolveBinding().getDeclaringClass().getQualifiedName() + ";" 
-						+ methodName + ";" 
+						+  methodName + ";" 
 						+ "Method;" + javadoc;
 		extract.export(this.path, text);
 	}

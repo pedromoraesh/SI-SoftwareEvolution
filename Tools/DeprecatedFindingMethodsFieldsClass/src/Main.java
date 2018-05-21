@@ -45,6 +45,7 @@ public class Main {
 			compilationUnit = (CompilationUnit) parser
 					.createAST(null);
 		} catch (Exception e) {
+			System.out.println(source.getAbsolutePath());
 			int[] retorno = {0,0,0,0,0,0};
 			return retorno;
 		}
@@ -88,7 +89,6 @@ public class Main {
 	public static void parseFilesInDir(File file, int[] values) throws IOException {
 		if (file.isFile()) {
 			if (file.getName().endsWith(".java")) {
-				System.out.println(file.getAbsolutePath());
 				int[] line = parse(readFileToString(file.getAbsolutePath()), file);
 				values[0] += line[0];
 				values[1] += line[1];

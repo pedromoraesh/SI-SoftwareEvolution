@@ -14,11 +14,11 @@ dir="$1"
 
  done
 
- bash takeLogs.sh
+ bash getCommits.sh
 
- bash takeDiff.sh
+ bash getDiff.sh
 
- bash takeMSEFiles.sh
+ bash getMSEFiles.sh
 
  bash filter-diffNoImport.sh
 
@@ -37,8 +37,8 @@ echo "(FormatImport) Imports formated"
 
 bash runExtractFromFamix.sh
 
-bash runRefDiff.sh
+# bash runRefDiff.sh
 
-bash formatRefDiff.sh
+# bash formatRefDiff.sh
 
 bash uknownCount.sh
