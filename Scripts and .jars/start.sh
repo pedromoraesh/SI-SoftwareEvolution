@@ -22,4 +22,6 @@ bash runRefDiff.sh
 
 bash formatRefDiff.sh
 
+bash runDeprecatedFindings.sh
+
 bash uknownCount.sh
