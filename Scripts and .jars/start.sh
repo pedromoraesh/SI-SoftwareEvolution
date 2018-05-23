@@ -2,43 +2,24 @@
 
 dir="$1"
 
- while read -r repo || [[ -n "$repo" ]]
- do
-  git clone $repo
+bash gitClone.sh
 
- done < repos.txt
+bash getPaths.sh dir
 
- for repo in $(ls -d */ | cut -f1 -d'/')
- do
- 	echo $dir\\$repo >> paths.txt
+bash getCommits.sh
 
- done
+bash getDiff.sh
 
- bash getCommits.sh
+bash getMSEFiles.sh dir
 
- bash getDiff.sh
+bash filter-diffNoImport.sh
 
- bash getMSEFiles.sh
-
- bash filter-diffNoImport.sh
-
- while read -r dir || [[ -n "$dir" ]]
- do
-
-  correctPath=$(echo "$dir" | tr '\\' '//')
-
-  echo "$correctPath"
-
-  java -jar FormatImports.jar "$correctPath"
-
-done < paths.txt
-
-echo "(FormatImport) Imports formated"
+bash formatImports.sh
 
 bash runExtractFromFamix.sh
 
-# bash runRefDiff.sh
+bash runRefDiff.sh
 
-# bash formatRefDiff.sh
+bash formatRefDiff.sh
 
 bash uknownCount.sh

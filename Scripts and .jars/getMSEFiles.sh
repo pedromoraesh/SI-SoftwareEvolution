@@ -2,6 +2,8 @@
 
 echo "Starting to execute JDT2Famix"
 
+dir="$1"
+
 while read -r directory || [[ -n "$directory" ]]
 	do
 
@@ -16,7 +18,7 @@ while read -r directory || [[ -n "$directory" ]]
 
   		git checkout $hash
 
-      java -cp "C:/Users/Pedro Henrique/Documents/IC/JDT2Famix/jdt2famix-1.0.3/*" com.feenk.jdt2famix.injava.Main "$directory" "$hash"
+      java -cp $dir"Tools/JDT2Famix/jdt2famix-1.0.3/*" com.feenk.jdt2famix.injava.Main "$directory" "$hash"
 
       mv *.mse msefiles/
 
