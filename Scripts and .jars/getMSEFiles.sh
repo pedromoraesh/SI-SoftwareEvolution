@@ -5,20 +5,22 @@ echo "Starting to execute JDT2Famix"
 dir="$1"
 
 while read -r directory || [[ -n "$directory" ]]
-	do
+  do
 
     cd "$directory"
+
+    correctPath=$(echo "$directory" | tr '\\' '//')
 
     rm -rf msefiles
 
     mkdir -p msefiles
 
     while read -r hash || [[ -n "$hash" ]]
-  		do
+      do
 
-  		git checkout $hash
+      git checkout $hash
 
-      java -cp $dir"Tools/JDT2Famix/jdt2famix-1.0.3/*" com.feenk.jdt2famix.injava.Main "$directory" "$hash"
+      java -cp "C:/Users/Pedro Henrique/Documents/IC/JDT2Famix/jdt2famix-1.0.3-auto/*" com.feenk.jdt2famix.injava.Main "$correctPath" "$hash"
 
       mv *.mse msefiles/
 
@@ -29,4 +31,4 @@ while read -r directory || [[ -n "$directory" ]]
 
     cd ..
 
-	done < "paths.txt"
+  done < "paths.txt"
