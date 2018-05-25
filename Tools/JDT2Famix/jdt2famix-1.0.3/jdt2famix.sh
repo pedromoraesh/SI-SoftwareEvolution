@@ -7,5 +7,4 @@
 #- the result is an MSE file with the name of the folder from which the script was executed
 
 BASE_PATH="$(cd "$(dirname "$0")" && pwd)"
-echo $BASE_PATH/*:$BASE_PATH
-java -cp "C:/Users/Pedro Henrique/Documents/IC/JDT2Famix/jdt2famix-1.0.3/*" com.feenk.jdt2famix.injava.Main
+java -cp "$BASE_PATH/*:$BASE_PATH" com.feenk.jdt2famix.injava.Main
