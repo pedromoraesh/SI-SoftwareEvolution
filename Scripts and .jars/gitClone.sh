@@ -7,5 +7,5 @@ do
  echo $folder
  git clone "https://github.com/"$repo $folder
 
-done < repos.txt
+done < repos0-50.txt
 $SHELL

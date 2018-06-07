@@ -10,7 +10,6 @@ import br.ufms.facom.FormatData;
 import br.ufms.facom.Model;
 import br.ufms.facom.model.FamixEntity;
 import br.ufms.facom.model.ParameterizableClass;
-import br.ufms.facom.model.Class;
 import br.ufms.facom.model.Entity;
 
 public class TestFamixModel {

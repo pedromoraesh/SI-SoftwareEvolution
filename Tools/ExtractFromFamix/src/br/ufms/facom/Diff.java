@@ -67,7 +67,7 @@ public class Diff {
 				if(!contentToExportParameterizable.equals("")){
 					contentToExportParameterizable = StringUtils.removeEnd(contentToExportParameterizable, ";");
 					extractor.export(path, contentToExportParameterizable, "Transaction-CBO.txt");
-					extractor.export(path, (oldVersion.getHash() + " and " + newVersion.getHash() + ";" + classFromNewVersion.getFullName() + contentToExportParameterizable), "Transaction-CBO(log).txt");
+					extractor.export(path, (oldVersion.getHash() + " and " + newVersion.getHash() + ";" + classFromNewVersion.getFullName() + ";" + contentToExportParameterizable), "Transaction-CBO(log).txt");
 				}
 			}
 		}
@@ -105,7 +105,7 @@ public class Diff {
 						if(!contentToExport.equals("")){
 							contentToExport = StringUtils.removeEnd(contentToExport, ";");
 							extractor.export(path, contentToExport, "Transaction-CBO.txt");
-							extractor.export(path, (oldVersion.getHash() + " and " + newVersion.getHash() + ";" + methodFromNewVersion.getFullName() + "-" + contentToExport), "Transaction-CBO(log).txt");
+							extractor.export(path, (oldVersion.getHash() + " and " + newVersion.getHash() + ";" + methodFromNewVersion.getFullName() + ";" + contentToExport), "Transaction-CBO(log).txt");
 							
 						}
 					}
@@ -142,7 +142,7 @@ public class Diff {
 						if(!contentToExport.equals("")){
 							contentToExport = StringUtils.removeEnd(contentToExport, ";");
 							extractor.export(path, contentToExport, "Transaction-Invoc.txt");
-							extractor.export(path, (oldVersion.getHash() + " and " + newVersion.getHash() + ";" + methodFromNewVersion.getFullName() + "-" + contentToExport), "Transaction-Invoc(log).txt");
+							extractor.export(path, (oldVersion.getHash() + " and " + newVersion.getHash() + ";" + methodFromNewVersion.getFullName() + ";" + contentToExport), "Transaction-Invoc(log).txt");
 							
 						}
 						

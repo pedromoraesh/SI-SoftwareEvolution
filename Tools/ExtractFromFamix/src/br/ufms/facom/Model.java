@@ -174,6 +174,7 @@ public class Model {
 			while(nextEntity != null){
 				fullName = nextEntity.getName() + "." + fullName;
 				nextEntity = nextEntity.getContainer();
+				
 			}
 			aType.setFullName(fullName);
 		}
@@ -462,7 +463,7 @@ public class Model {
 			}
 			for(Enumm enumm2: listEnum){
 				if(enumm.getContainerID() == enumm2.getId()){
-					enumm.setContainer(enumm);
+					enumm.setContainer(enumm2);
 					break;
 				}
 			}

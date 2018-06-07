@@ -20,6 +20,7 @@ public class Main {
 		Model modelNew = new Model();
 		
 		String repository = StringUtils.substringAfterLast(pathName, "/");
+		System.out.println(repository);
 			
 		Map<Integer, FamixEntity> mapOld;
 		Map<Integer, FamixEntity> mapNew;
@@ -39,21 +40,28 @@ public class Main {
 			hashNew = in.nextLine();
 			
 			
-				System.out.println("Getting diff from " + hashOld + " to " + hashNew);;
-				mapOld = FormatData.mseToMap(pathName + "/msefiles/" + repository + "_" + hashOld + ".mse");
-				mapNew = FormatData.mseToMap(pathName + "/msefiles/" + repository + "_" + hashNew + ".mse");
+				System.out.println("Getting diff from " + hashOld + " to " + hashNew);			
 				
-				modelOld.setHash(hashOld);
-				modelNew.setHash(hashNew);
+				canOpen(pathName + "/msefiles/" + repository + "_" + hashNew + ".mse");
+				canOpen(pathName + "/msefiles/" + repository + "_" + hashOld + ".mse");
 				
-				modelOld.createObjects(mapOld);
-				modelNew.createObjects(mapNew);
-				
-				diff.setPath(pathName + "/diffResults/");
-				diff.diff(modelOld, modelNew);
-				
+				//TO Solve problems when JDT2FAMIX don't generate some .mse
+				if(canOpen(pathName + "/msefiles/" + repository + "_" + hashNew + ".mse")
+					&& canOpen(pathName + "/msefiles/" + repository + "_" + hashOld + ".mse")){
+					mapOld = FormatData.mseToMap(pathName + "/msefiles/" + repository + "_" + hashOld + ".mse");
+					mapNew = FormatData.mseToMap(pathName + "/msefiles/" + repository + "_" + hashNew + ".mse");
+									
+					modelOld.setHash(hashOld);
+					modelNew.setHash(hashNew);
+					
+					modelOld.createObjects(mapOld);
+					modelNew.createObjects(mapNew);
+					
+					diff.setPath(pathName + "/diffResults/");
+					diff.diff(modelOld, modelNew);
+				}
+								
 			hashOld = hashNew;
-			
 			
 		}
 		
@@ -63,6 +71,15 @@ public class Main {
 		
 	}
 	
+	public static boolean canOpen(String path){
+		try {
+			FileReader f = new FileReader(path);
+			f.close();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
 	
 
 
