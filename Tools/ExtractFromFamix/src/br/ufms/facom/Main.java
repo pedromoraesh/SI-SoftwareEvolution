@@ -61,7 +61,7 @@ public class Main {
 		
 		in.close();
 		
-		System.out.println("Diff done");
+		System.out.println("----------Diff done------------");
 		
 	}
 	

@@ -40,7 +40,6 @@ public class Diff {
 				
 				diff = detectRemove(classFromNewVersion, classFromOldVersion);
 				if(diff.size() != 0){
-					
 					contentToExport = contentToExport + extractDiff(diff, classFromNewVersion, "R");	
 				}
 				if(!contentToExport.equals("")){
@@ -154,7 +153,6 @@ public class Diff {
 	}
 	
 	private Set<Entity> detectRemove(ArrayList<Invocation> neww, ArrayList<Invocation> old) {
-		
 		Set<Entity> cboOldClass = new HashSet<Entity>(old);
 		Set<Entity> cboNewClass = new HashSet<Entity>(neww);
 		
@@ -179,7 +177,7 @@ public class Diff {
 	}
 	
 	private Set<Entity> detectRemove(Class neww, Class old) {
-		
+
 		Set<Entity> cboOldClass = new HashSet<Entity>(old.calculateCBO());
 		Set<Entity> cboNewClass = new HashSet<Entity>(neww.calculateCBO());
 		
@@ -255,8 +253,11 @@ public class Diff {
 		String content = "";
 				
 		for(Entity entity: diff){
-			
-			content = content + addOrRemove + "-" + entity.getFullName() + ";";
+			if(entity != null){
+				if(entity.getFullName() != null){
+					content = content + addOrRemove + "-" + entity.getFullName() + ";";
+				}
+			}
 		}
 		
 		return content;
@@ -264,8 +265,12 @@ public class Diff {
 	
 	public String extractDiff(Set<Entity> diff, ParameterizableClass classe, String addOrRemove){
 		String content = "";
-		for(Entity entity: diff){		
-			content = content + addOrRemove + "-" + entity.getFullName() + ";";
+		for(Entity entity: diff){	
+			if(entity != null){
+				if(entity.getFullName() != null){
+					content = content + addOrRemove + "-" + entity.getFullName() + ";";
+				}
+			}
 		}
 		
 		return content;
@@ -274,7 +279,12 @@ public class Diff {
 	public String extractDiff(Set<Entity> diff, Method method, String addOrRemove){
 		String content = "";
 		for(Entity entity: diff){
-			content = content + addOrRemove + "-" + entity.getFullName() + ";";
+			
+			if(entity != null){
+				if(entity.getFullName() != null){
+					content = content + addOrRemove + "-" + entity.getFullName() + ";";
+				}		
+			}
 		}
 		
 		return content;
@@ -284,8 +294,11 @@ public class Diff {
 		
 		String content = "";
 		for(Entity entity: diff){
-			if(entity.getFullName() != null)
-				content = content + addOrRemove + "-" + entity.getFullName() + ";";
+			if(entity != null){
+				if(entity.getFullName() != null){
+					content = content + addOrRemove + "-" + entity.getFullName() + ";";
+				}
+			}
 		}
 		
 		return content;
