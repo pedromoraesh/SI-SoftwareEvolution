@@ -238,7 +238,7 @@ public class Diff {
 		return diff;
 	}
 	
-	private Set<Entity> detectAdd(ArrayList<Invocation> old, ArrayList<Invocation> neww) {
+	public Set<Entity> detectAdd(ArrayList<Invocation> old, ArrayList<Invocation> neww) {
 
 		Set<Entity> cboOldClass = new HashSet<Entity>(old);
 		Set<Entity> cboNewClass = new HashSet<Entity>(neww);

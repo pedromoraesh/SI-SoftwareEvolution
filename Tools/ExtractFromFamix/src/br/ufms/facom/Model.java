@@ -69,48 +69,48 @@ public class Model {
 	}
 
 	private ArrayList<Invocation> candidateOfInvocation(ArrayList<Method> listMethods, ArrayList<Invocation> listInvocations) {
-		
+
 		for(Invocation invocation: listInvocations){
 			for(Method method: listMethods){
 				if(invocation.getCandidateID() == method.getId()){
 					invocation.setCandidate(method);
 				}
 			}
-//			for(Attribute attribute: listAttributes){
-//				if(invocation.getCandidateID() == attribute.getId()){
-//					invocation.setCandidate(attribute);
-//				}
-//			}
-//			for(Parameter parameter: listParameters){
-//				if(invocation.getCandidateID() == parameter.getId()){
-//					invocation.setCandidate(parameter);
-//				}
-//			}
-//			for(Enumm enumm: listEnum){
-//				if(invocation.getCandidateID() == enumm.getId()){
-//					invocation.setCandidate(enumm);
-//				}
-//			}
-//			for(Class classe: listClasses){
-//				if(invocation.getCandidateID() == classe.getId()){
-//					invocation.setCandidate(classe);
-//				}
-//			}
-//			for(Type type: listTypes){
-//				if(invocation.getCandidateID() == type.getId()){
-//					invocation.setCandidate(type);
-//				}
-//			}
-//			for(ParameterizedType pType: listPType){
-//				if(invocation.getCandidateID() == pType.getId()){
-//					invocation.setCandidate(pType);
-//				}
-//			}
-//			for(ParameterizableClass pClass: listPClass){
-//				if(invocation.getCandidateID() == pClass.getId()){
-//					invocation.setCandidate(pClass);
-//				}
-//			}
+			//			for(Attribute attribute: listAttributes){
+			//				if(invocation.getCandidateID() == attribute.getId()){
+			//					invocation.setCandidate(attribute);
+			//				}
+			//			}
+			//			for(Parameter parameter: listParameters){
+			//				if(invocation.getCandidateID() == parameter.getId()){
+			//					invocation.setCandidate(parameter);
+			//				}
+			//			}
+			//			for(Enumm enumm: listEnum){
+			//				if(invocation.getCandidateID() == enumm.getId()){
+			//					invocation.setCandidate(enumm);
+			//				}
+			//			}
+			//			for(Class classe: listClasses){
+			//				if(invocation.getCandidateID() == classe.getId()){
+			//					invocation.setCandidate(classe);
+			//				}
+			//			}
+			//			for(Type type: listTypes){
+			//				if(invocation.getCandidateID() == type.getId()){
+			//					invocation.setCandidate(type);
+			//				}
+			//			}
+			//			for(ParameterizedType pType: listPType){
+			//				if(invocation.getCandidateID() == pType.getId()){
+			//					invocation.setCandidate(pType);
+			//				}
+			//			}
+			//			for(ParameterizableClass pClass: listPClass){
+			//				if(invocation.getCandidateID() == pClass.getId()){
+			//					invocation.setCandidate(pClass);
+			//				}
+			//			}
 		}
 		return listInvocations;
 	}
@@ -119,15 +119,15 @@ public class Model {
 		for(Method method: listMethods){
 			for(Invocation invocation: method.getListInvocation()){
 				if(invocation.getCandidate() != null){
-//					if(invocation.getReciever() instanceof Attribute ){
-//						Attribute temp = (Attribute)invocation.getReciever();
-//						String fullName = "";
-//						if(!(temp.getType() instanceof PrimitiveType)){
-//							fullName = temp.getType().getFullName() + "." +StringUtils.remove(invocation.getSignature(), (temp.getName() + "."));
-//						}
-//						invocation.setFullName(fullName);
-//					}
-					
+					//					if(invocation.getReciever() instanceof Attribute ){
+					//						Attribute temp = (Attribute)invocation.getReciever();
+					//						String fullName = "";
+					//						if(!(temp.getType() instanceof PrimitiveType)){
+					//							fullName = temp.getType().getFullName() + "." +StringUtils.remove(invocation.getSignature(), (temp.getName() + "."));
+					//						}
+					//						invocation.setFullName(fullName);
+					//					}
+
 					invocation.setFullName(invocation.getCandidate().getFullName());
 
 				}
@@ -174,7 +174,7 @@ public class Model {
 			while(nextEntity != null){
 				fullName = nextEntity.getName() + "." + fullName;
 				nextEntity = nextEntity.getContainer();
-				
+
 			}
 			aType.setFullName(fullName);
 		}
@@ -842,7 +842,7 @@ public class Model {
 
 				}
 			}
-			
+
 			for(AnnotationType aType: listAType){
 				if(localVariable.getDeclaredTypeID() == aType.getId()){
 					localVariable.setType(aType);
@@ -958,7 +958,7 @@ public class Model {
 					break;
 				}
 			}
-			
+
 			for(AnnotationType aType: listAType){
 				if(parameter.getDeclaredTypeID() == aType.getId()){
 					parameter.setType(aType);
@@ -972,7 +972,7 @@ public class Model {
 
 	private ArrayList<Class> doInheritance(ArrayList<Class> listClasses, ArrayList<Inheritance> listInheritance,
 			ArrayList<ParameterizableClass> listPClass){
-		
+
 		ArrayList<Entity> temp = new ArrayList<Entity>();
 
 		for(Inheritance inheritance: listInheritance){
@@ -1561,28 +1561,28 @@ public class Model {
 		this.listPClass = listPClass;
 	}
 
-		public ArrayList<Method> getAllMethods() {
-			return listMethods;
-		}
-
-		public void setAllMethods(ArrayList<Method> listMethods) {
-			this.listMethods = listMethods;
-		}
-
-		public ArrayList<Invocation> getInvocations() {
-			return listInvocations;
-		}
-
-		public void setInvocations(ArrayList<Invocation> listInvocations) {
-			this.listInvocations = listInvocations;
-		}
-
-		public String getHash() {
-			return hash;
-		}
-
-		public void setHash(String hash) {
-			this.hash = hash;
-		}
-
+	public ArrayList<Method> getAllMethods() {
+		return listMethods;
 	}
+
+	public void setAllMethods(ArrayList<Method> listMethods) {
+		this.listMethods = listMethods;
+	}
+
+	public ArrayList<Invocation> getInvocations() {
+		return listInvocations;
+	}
+
+	public void setInvocations(ArrayList<Invocation> listInvocations) {
+		this.listInvocations = listInvocations;
+	}
+
+	public String getHash() {
+		return hash;
+	}
+
+	public void setHash(String hash) {
+		this.hash = hash;
+	}
+
+}

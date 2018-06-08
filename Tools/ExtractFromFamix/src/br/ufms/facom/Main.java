@@ -14,7 +14,6 @@ public class Main {
 	
 	public static void main(String[] args) throws IOException {
 		
-		
 		String pathName = args[0];
 		Model modelOld = new Model();
 		Model modelNew = new Model();
@@ -37,17 +36,12 @@ public class Main {
 		while(in.hasNextLine()){
 			
 			
-			hashNew = in.nextLine();
-			
-			
-				System.out.println("Getting diff from " + hashOld + " to " + hashNew);			
-				
-				canOpen(pathName + "/msefiles/" + repository + "_" + hashNew + ".mse");
-				canOpen(pathName + "/msefiles/" + repository + "_" + hashOld + ".mse");
+			hashNew = in.nextLine();		
 				
 				//TO Solve problems when JDT2FAMIX don't generate some .mse
 				if(canOpen(pathName + "/msefiles/" + repository + "_" + hashNew + ".mse")
 					&& canOpen(pathName + "/msefiles/" + repository + "_" + hashOld + ".mse")){
+					System.out.println("Getting diff from " + hashOld + " to " + hashNew);
 					mapOld = FormatData.mseToMap(pathName + "/msefiles/" + repository + "_" + hashOld + ".mse");
 					mapNew = FormatData.mseToMap(pathName + "/msefiles/" + repository + "_" + hashNew + ".mse");
 									
