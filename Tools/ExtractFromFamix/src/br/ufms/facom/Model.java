@@ -163,6 +163,7 @@ public class Model {
 			while(nextEntity != null){
 				fullName = nextEntity.getName() + "." + fullName;
 				nextEntity = nextEntity.getContainer();
+				System.out.println("Class");
 			}
 			classe.setFullName(fullName);
 
@@ -174,6 +175,7 @@ public class Model {
 			while(nextEntity != null){
 				fullName = nextEntity.getName() + "." + fullName;
 				nextEntity = nextEntity.getContainer();
+				System.out.println(fullName);
 
 			}
 			aType.setFullName(fullName);
@@ -740,7 +742,7 @@ public class Model {
 			}
 			for(AnnotationType aTypee: listAType){
 				if(aType.getContainerID() == aTypee.getId()){
-					aType.setContainer(aType);
+					aType.setContainer(aTypee);
 					break;
 				}
 			}
