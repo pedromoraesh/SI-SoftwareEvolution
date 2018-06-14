@@ -1,0 +1,1441 @@
+THERE_BE_DRAGONS_HERE
+SubscriptOutOfBounds: 3
+14 June 2018 1:49:35.708493 pm
+
+VM: Win32 - IX86 - 6.2 - CoInterpreter VMMaker.oscog-HolgerHansPeterFreyther.1880 uuid: 16138eb3-2390-40f5-a6c8-15f0494936f8 Jul 18 2016
+StackToRegisterMappingCogit VMMaker.oscog-HolgerHansPeterFreyther.1880 uuid: 16138eb3-2390-40f5-a6c8-15f0494936f8 Jul 18 2016
+https://github.com/pharo-project/pharo-vm.git Commit: 3daf6cb181c8332cf6993b07430e0d5f0886fda9 Date: 2016-07-16 18:01:23 +0200 By: GitHub <noreply@github.com> Jenkins build #597
+
+Image: Pharo5.0 [Latest update: #50761]
+
+OrderedCollection(Object)>>errorSubscriptBounds:
+	Receiver: an OrderedCollection(a GLMPane(262751488 1) a GLMPane(838416128 2))
+	Arguments and temporary variables: 
+		index: 	3
+	Receiver's instance variables: 
+		array: 	an Array(a GLMPane(262751488 1) a GLMPane(838416128 2) nil nil nil nil n...etc...
+		firstIndex: 	1
+		lastIndex: 	2
+
+
+OrderedCollection>>at:
+	Receiver: an OrderedCollection(a GLMPane(262751488 1) a GLMPane(838416128 2))
+	Arguments and temporary variables: 
+		anInteger: 	3
+		index: 	3
+	Receiver's instance variables: 
+		array: 	an Array(a GLMPane(262751488 1) a GLMPane(838416128 2) nil nil nil nil n...etc...
+		firstIndex: 	1
+		lastIndex: 	2
+
+
+[ :ann | 
+aBrowser
+	activeEntity: ((aBrowser panes at: ann pageIndex) port: #entity) value ] in GLMMorphicAccumulatorRenderer>>render:
+	Receiver: a GLMMorphicAccumulatorRenderer
+	Arguments and temporary variables: 
+		aBrowser: 	a GLMAccumulator(id=813254400 title=nil pane=a GLMPane(707560704 deta...etc...
+		ann: 	a LazyTabPageChanged
+	Receiver's instance variables: 
+		renderer: 	a GLMMorphicRenderer
+		tabs: 	a LazyTabGroupMorph(435206400)
+
+
+BlockClosure>>cull:
+	Receiver: [ :ann | 
+aBrowser
+	activeEntity: ((aBrowser panes at: ann pageIndex) port: #entity) value...etc...
+	Arguments and temporary variables: 
+		anArg: 	a LazyTabPageChanged
+	Receiver's instance variables: 
+		outerContext: 	GLMMorphicAccumulatorRenderer>>render:
+		startpc: 	212
+		numArgs: 	1
+
+
+BlockClosure>>cull:cull:
+	Receiver: [ :ann | 
+aBrowser
+	activeEntity: ((aBrowser panes at: ann pageIndex) port: #entity) value...etc...
+	Arguments and temporary variables: 
+		firstArg: 	a LazyTabPageChanged
+		secondArg: 	a GLMAnnouncer
+	Receiver's instance variables: 
+		outerContext: 	GLMMorphicAccumulatorRenderer>>render:
+		startpc: 	212
+		numArgs: 	1
+
+
+[ action cull: anAnnouncement cull: announcer ] in AnnouncementSubscription>>deliver:
+	Receiver: an AnnouncementSubscription
+	Arguments and temporary variables: 
+		anAnnouncement: 	a LazyTabPageChanged
+	Receiver's instance variables: 
+		announcer: 	a GLMAnnouncer
+		announcementClass: 	LazyTabPageChanged
+		subscriber: 	a GLMMorphicAccumulatorRenderer
+		action: 	[ :ann | 
+aBrowser
+	activeEntity: ((aBrowser panes at: ann pageIndex) p...etc...
+
+
+BlockClosure>>on:do:
+	Receiver: [ action cull: anAnnouncement cull: announcer ]
+	Arguments and temporary variables: 
+		exception: 	UnhandledError
+		handlerAction: 	[ :ex | 
+| copy onDoCtx process handler bottom thisCtx |
+onDoCtx...etc...
+	Receiver's instance variables: 
+		outerContext: 	AnnouncementSubscription>>deliver:
+		startpc: 	47
+		numArgs: 	0
+
+
+BlockClosure>>on:fork:
+	Receiver: [ action cull: anAnnouncement cull: announcer ]
+	Arguments and temporary variables: 
+		exception: 	UnhandledError
+		handlerAction: 	[ :ex | ex pass ]
+	Receiver's instance variables: 
+		outerContext: 	AnnouncementSubscription>>deliver:
+		startpc: 	47
+		numArgs: 	0
+
+
+AnnouncementSubscription>>deliver:
+	Receiver: an AnnouncementSubscription
+	Arguments and temporary variables: 
+		anAnnouncement: 	a LazyTabPageChanged
+	Receiver's instance variables: 
+		announcer: 	a GLMAnnouncer
+		announcementClass: 	LazyTabPageChanged
+		subscriber: 	a GLMMorphicAccumulatorRenderer
+		action: 	[ :ann | 
+aBrowser
+	activeEntity: ((aBrowser panes at: ann pageIndex) p...etc...
+
+
+[ subscription deliver: anAnnouncement ] in SubscriptionRegistry>>deliver:to:startingAt:
+	Receiver: a SubscriptionRegistry
+	Arguments and temporary variables: 
+		anAnnouncement: 	a LazyTabPageChanged
+		subs: 	an Array(an AnnouncementSubscription)
+		startIndex: 	1
+		index: 	1
+		subscription: 	an AnnouncementSubscription
+	Receiver's instance variables: 
+		subscriptions: 	an IdentitySet(an AnnouncementSubscription an AnnouncementSubscr...etc...
+		monitor: 	a Semaphore()
+
+
+BlockClosure>>ifCurtailed:
+	Receiver: [ subscription deliver: anAnnouncement ]
+	Arguments and temporary variables: 
+		aBlock: 	[ self deliver: anAnnouncement to: subs startingAt: index + 1 ]
+		complete: 	nil
+		result: 	nil
+	Receiver's instance variables: 
+		outerContext: 	SubscriptionRegistry>>deliver:to:startingAt:
+		startpc: 	54
+		numArgs: 	0
+
+
+SubscriptionRegistry>>deliver:to:startingAt:
+	Receiver: a SubscriptionRegistry
+	Arguments and temporary variables: 
+		anAnnouncement: 	a LazyTabPageChanged
+		subs: 	an Array(an AnnouncementSubscription)
+		startIndex: 	1
+		subscription: 	an AnnouncementSubscription
+		index: 	1
+	Receiver's instance variables: 
+		subscriptions: 	an IdentitySet(an AnnouncementSubscription an AnnouncementSubscr...etc...
+		monitor: 	a Semaphore()
+
+
+SubscriptionRegistry>>deliver:to:
+	Receiver: a SubscriptionRegistry
+	Arguments and temporary variables: 
+		anAnnouncement: 	a LazyTabPageChanged
+		subs: 	an Array(an AnnouncementSubscription)
+	Receiver's instance variables: 
+		subscriptions: 	an IdentitySet(an AnnouncementSubscription an AnnouncementSubscr...etc...
+		monitor: 	a Semaphore()
+
+
+SubscriptionRegistry>>deliver:
+	Receiver: a SubscriptionRegistry
+	Arguments and temporary variables: 
+		interestedSubscriptions: 	an Array(an AnnouncementSubscription)
+		anAnnouncement: 	a LazyTabPageChanged
+	Receiver's instance variables: 
+		subscriptions: 	an IdentitySet(an AnnouncementSubscription an AnnouncementSubscr...etc...
+		monitor: 	a Semaphore()
+
+
+GLMAnnouncer(Announcer)>>announce:
+	Receiver: a GLMAnnouncer
+	Arguments and temporary variables: 
+		anAnnouncement: 	a LazyTabPageChanged
+		announcement: 	a LazyTabPageChanged
+	Receiver's instance variables: 
+		registry: 	a SubscriptionRegistry
+		suspendAll: 	false
+		suspendedAnnouncemets: 	an OrderedCollection()
+
+
+GLMAnnouncer>>announce:
+	Receiver: a GLMAnnouncer
+	Arguments and temporary variables: 
+		anAnnouncement: 	a LazyTabPageChanged
+	Receiver's instance variables: 
+		registry: 	a SubscriptionRegistry
+		suspendAll: 	false
+		suspendedAnnouncemets: 	an OrderedCollection()
+
+
+LazyTabGroupMorph>>updatePageIndex:
+	Receiver: a LazyTabGroupMorph(435206400)
+	Arguments and temporary variables: 
+		index: 	3
+		p: 	a PanelMorph(592025344)
+		oldPage: 	a GLMTabLabelBrick(734861568)
+	Receiver's instance variables: 
+		bounds: 	(256.0@125.0) corner: (845.0@583.0)
+		owner: 	nil
+		submorphs: 	an Array(a PanelMorph(881980160) a PanelMorph(643678464))
+		fullBounds: 	nil
+		color: 	Color transparent
+		extension: 	a MorphExtension (355605248)
+		borderWidth: 	0
+		borderColor: 	Color yellow
+		model: 	nil
+		tabSelectorMorph: 	a GLMTabSelectorBrick(214175488)
+		contentMorph: 	a PanelMorph(881980160)
+		pageMorphs: 	an OrderedCollection(a LazyTabPage(465370368) a LazyTabPage(3480936...etc...
+		announcer: 	a GLMAnnouncer
+		toolbarMorph: 	a PanelMorph(665829120)
+		headerMorph: 	a PanelMorph(643678464)
+		tabSelectorWidth: 	nil
+
+
+LazyTabGroupMorph(TabGroupMorph)>>update:
+	Receiver: a LazyTabGroupMorph(435206400)
+	Arguments and temporary variables: 
+		aSymbol: 	#selectedIndex
+	Receiver's instance variables: 
+		bounds: 	(256.0@125.0) corner: (845.0@583.0)
+		owner: 	nil
+		submorphs: 	an Array(a PanelMorph(881980160) a PanelMorph(643678464))
+		fullBounds: 	nil
+		color: 	Color transparent
+		extension: 	a MorphExtension (355605248)
+		borderWidth: 	0
+		borderColor: 	Color yellow
+		model: 	nil
+		tabSelectorMorph: 	a GLMTabSelectorBrick(214175488)
+		contentMorph: 	a PanelMorph(881980160)
+		pageMorphs: 	an OrderedCollection(a LazyTabPage(465370368) a LazyTabPage(3480936...etc...
+		announcer: 	a GLMAnnouncer
+		toolbarMorph: 	a PanelMorph(665829120)
+		headerMorph: 	a PanelMorph(643678464)
+		tabSelectorWidth: 	nil
+
+
+LazyTabGroupMorph(Object)>>update:with:
+	Receiver: a LazyTabGroupMorph(435206400)
+	Arguments and temporary variables: 
+		anAspect: 	#selectedIndex
+		anObject: 	1
+	Receiver's instance variables: 
+		bounds: 	(256.0@125.0) corner: (845.0@583.0)
+		owner: 	nil
+		submorphs: 	an Array(a PanelMorph(881980160) a PanelMorph(643678464))
+		fullBounds: 	nil
+		color: 	Color transparent
+		extension: 	a MorphExtension (355605248)
+		borderWidth: 	0
+		borderColor: 	Color yellow
+		model: 	nil
+		tabSelectorMorph: 	a GLMTabSelectorBrick(214175488)
+		contentMorph: 	a PanelMorph(881980160)
+		pageMorphs: 	an OrderedCollection(a LazyTabPage(465370368) a LazyTabPage(3480936...etc...
+		announcer: 	a GLMAnnouncer
+		toolbarMorph: 	a PanelMorph(665829120)
+		headerMorph: 	a PanelMorph(643678464)
+		tabSelectorWidth: 	nil
+
+
+MorphChangedWithArguments>>deliverTo:
+	Receiver: a MorphChangedWithArguments
+	Arguments and temporary variables: 
+		aHandler: 	a LazyTabGroupMorph(435206400)
+	Receiver's instance variables: 
+		morph: 	a GLMTabSelectorBrick(214175488)
+		selector: 	#selectedIndex
+		arguments: 	1
+
+
+LazyTabGroupMorph(Morph)>>handleUpdate:
+	Receiver: a LazyTabGroupMorph(435206400)
+	Arguments and temporary variables: 
+		aMorphChangedAnnouncement: 	a MorphChangedWithArguments
+	Receiver's instance variables: 
+		bounds: 	(256.0@125.0) corner: (845.0@583.0)
+		owner: 	nil
+		submorphs: 	an Array(a PanelMorph(881980160) a PanelMorph(643678464))
+		fullBounds: 	nil
+		color: 	Color transparent
+		extension: 	a MorphExtension (355605248)
+		borderWidth: 	0
+		borderColor: 	Color yellow
+		model: 	nil
+		tabSelectorMorph: 	a GLMTabSelectorBrick(214175488)
+		contentMorph: 	a PanelMorph(881980160)
+		pageMorphs: 	an OrderedCollection(a LazyTabPage(465370368) a LazyTabPage(3480936...etc...
+		announcer: 	a GLMAnnouncer
+		toolbarMorph: 	a PanelMorph(665829120)
+		headerMorph: 	a PanelMorph(643678464)
+		tabSelectorWidth: 	nil
+
+
+MessageSend>>value:
+	Receiver: MessageSend(#handleUpdate: -> a LazyTabGroupMorph(435206400))
+	Arguments and temporary variables: 
+		anObject: 	a MorphChangedWithArguments
+	Receiver's instance variables: 
+		receiver: 	a LazyTabGroupMorph(435206400)
+		selector: 	#handleUpdate:
+		arguments: 	#()
+
+
+MessageSend>>cull:
+	Receiver: MessageSend(#handleUpdate: -> a LazyTabGroupMorph(435206400))
+	Arguments and temporary variables: 
+		arg: 	a MorphChangedWithArguments
+	Receiver's instance variables: 
+		receiver: 	a LazyTabGroupMorph(435206400)
+		selector: 	#handleUpdate:
+		arguments: 	#()
+
+
+MessageSend>>cull:cull:
+	Receiver: MessageSend(#handleUpdate: -> a LazyTabGroupMorph(435206400))
+	Arguments and temporary variables: 
+		arg1: 	a MorphChangedWithArguments
+		arg2: 	an Announcer
+	Receiver's instance variables: 
+		receiver: 	a LazyTabGroupMorph(435206400)
+		selector: 	#handleUpdate:
+		arguments: 	#()
+
+
+[ action cull: anAnnouncement cull: announcer ] in AnnouncementSubscription>>deliver:
+	Receiver: an AnnouncementSubscription
+	Arguments and temporary variables: 
+		anAnnouncement: 	a MorphChangedWithArguments
+	Receiver's instance variables: 
+		announcer: 	an Announcer
+		announcementClass: 	an AnnouncementSet(MorphChanged MorphChangedWithArguments)
+		subscriber: 	a LazyTabGroupMorph(435206400)
+		action: 	MessageSend(#handleUpdate: -> a LazyTabGroupMorph(435206400))
+
+
+BlockClosure>>on:do:
+	Receiver: [ action cull: anAnnouncement cull: announcer ]
+	Arguments and temporary variables: 
+		exception: 	UnhandledError
+		handlerAction: 	[ :ex | 
+| copy onDoCtx process handler bottom thisCtx |
+onDoCtx...etc...
+	Receiver's instance variables: 
+		outerContext: 	AnnouncementSubscription>>deliver:
+		startpc: 	47
+		numArgs: 	0
+
+
+BlockClosure>>on:fork:
+	Receiver: [ action cull: anAnnouncement cull: announcer ]
+	Arguments and temporary variables: 
+		exception: 	UnhandledError
+		handlerAction: 	[ :ex | ex pass ]
+	Receiver's instance variables: 
+		outerContext: 	AnnouncementSubscription>>deliver:
+		startpc: 	47
+		numArgs: 	0
+
+
+AnnouncementSubscription>>deliver:
+	Receiver: an AnnouncementSubscription
+	Arguments and temporary variables: 
+		anAnnouncement: 	a MorphChangedWithArguments
+	Receiver's instance variables: 
+		announcer: 	an Announcer
+		announcementClass: 	an AnnouncementSet(MorphChanged MorphChangedWithArguments)
+		subscriber: 	a LazyTabGroupMorph(435206400)
+		action: 	MessageSend(#handleUpdate: -> a LazyTabGroupMorph(435206400))
+
+
+[ subscription deliver: anAnnouncement ] in SubscriptionRegistry>>deliver:to:startingAt:
+	Receiver: a SubscriptionRegistry
+	Arguments and temporary variables: 
+		anAnnouncement: 	a MorphChangedWithArguments
+		subs: 	an Array(an AnnouncementSubscription)
+		startIndex: 	1
+		index: 	1
+		subscription: 	an AnnouncementSubscription
+	Receiver's instance variables: 
+		subscriptions: 	an IdentitySet(an AnnouncementSubscription)
+		monitor: 	a Semaphore()
+
+
+BlockClosure>>ifCurtailed:
+	Receiver: [ subscription deliver: anAnnouncement ]
+	Arguments and temporary variables: 
+		aBlock: 	[ self deliver: anAnnouncement to: subs startingAt: index + 1 ]
+		complete: 	nil
+		result: 	nil
+	Receiver's instance variables: 
+		outerContext: 	SubscriptionRegistry>>deliver:to:startingAt:
+		startpc: 	54
+		numArgs: 	0
+
+
+SubscriptionRegistry>>deliver:to:startingAt:
+	Receiver: a SubscriptionRegistry
+	Arguments and temporary variables: 
+		anAnnouncement: 	a MorphChangedWithArguments
+		subs: 	an Array(an AnnouncementSubscription)
+		startIndex: 	1
+		subscription: 	an AnnouncementSubscription
+		index: 	1
+	Receiver's instance variables: 
+		subscriptions: 	an IdentitySet(an AnnouncementSubscription)
+		monitor: 	a Semaphore()
+
+
+SubscriptionRegistry>>deliver:to:
+	Receiver: a SubscriptionRegistry
+	Arguments and temporary variables: 
+		anAnnouncement: 	a MorphChangedWithArguments
+		subs: 	an Array(an AnnouncementSubscription)
+	Receiver's instance variables: 
+		subscriptions: 	an IdentitySet(an AnnouncementSubscription)
+		monitor: 	a Semaphore()
+
+
+SubscriptionRegistry>>deliver:
+	Receiver: a SubscriptionRegistry
+	Arguments and temporary variables: 
+		interestedSubscriptions: 	an Array(an AnnouncementSubscription)
+		anAnnouncement: 	a MorphChangedWithArguments
+	Receiver's instance variables: 
+		subscriptions: 	an IdentitySet(an AnnouncementSubscription)
+		monitor: 	a Semaphore()
+
+
+Announcer>>announce:
+	Receiver: an Announcer
+	Arguments and temporary variables: 
+		anAnnouncement: 	a MorphChangedWithArguments
+		announcement: 	a MorphChangedWithArguments
+	Receiver's instance variables: 
+		registry: 	a SubscriptionRegistry
+
+
+GLMTabSelectorBrick(Morph)>>doAnnounce:
+	Receiver: a GLMTabSelectorBrick(214175488)
+	Arguments and temporary variables: 
+		anAnnouncement: 	a MorphChangedWithArguments
+	Receiver's instance variables: 
+		bounds: 	(256.0@125.0) corner: (795.0@149.0)
+		owner: 	a PanelMorph(643678464)
+		submorphs: 	an Array(a GLMBrick(57165056))
+		fullBounds: 	(256@125) corner: (795@149)
+		color: 	Color transparent
+		extension: 	a MorphExtension (848443136) [other:  (minHeight -> 24) (announcer -...etc...
+		brickRoot: 	a GLMBrick(57165056)
+		vResizing: 	#spaceFill
+		hResizing: 	#spaceFill
+		selectedIndex: 	3
+		font: 	a LogicalFont
+ familyName: Source Sans Pro
+ emphasis: nil
+ pointSize: 10
+...etc...
+		tabs: 	an OrderedCollection(a GLMTabLabelBrick(496128768) a GLMTabLabelBrick(831...etc...
+
+
+GLMTabSelectorBrick(Morph)>>changed:with:
+	Receiver: a GLMTabSelectorBrick(214175488)
+	Arguments and temporary variables: 
+		anAspect: 	#selectedIndex
+		anObject: 	1
+	Receiver's instance variables: 
+		bounds: 	(256.0@125.0) corner: (795.0@149.0)
+		owner: 	a PanelMorph(643678464)
+		submorphs: 	an Array(a GLMBrick(57165056))
+		fullBounds: 	(256@125) corner: (795@149)
+		color: 	Color transparent
+		extension: 	a MorphExtension (848443136) [other:  (minHeight -> 24) (announcer -...etc...
+		brickRoot: 	a GLMBrick(57165056)
+		vResizing: 	#spaceFill
+		hResizing: 	#spaceFill
+		selectedIndex: 	3
+		font: 	a LogicalFont
+ familyName: Source Sans Pro
+ emphasis: nil
+ pointSize: 10
+...etc...
+		tabs: 	an OrderedCollection(a GLMTabLabelBrick(496128768) a GLMTabLabelBrick(831...etc...
+
+
+GLMTabSelectorBrick>>selectedIndex:
+	Receiver: a GLMTabSelectorBrick(214175488)
+	Arguments and temporary variables: 
+		index: 	3
+		oldIndex: 	1
+	Receiver's instance variables: 
+		bounds: 	(256.0@125.0) corner: (795.0@149.0)
+		owner: 	a PanelMorph(643678464)
+		submorphs: 	an Array(a GLMBrick(57165056))
+		fullBounds: 	(256@125) corner: (795@149)
+		color: 	Color transparent
+		extension: 	a MorphExtension (848443136) [other:  (minHeight -> 24) (announcer -...etc...
+		brickRoot: 	a GLMBrick(57165056)
+		vResizing: 	#spaceFill
+		hResizing: 	#spaceFill
+		selectedIndex: 	3
+		font: 	a LogicalFont
+ familyName: Source Sans Pro
+ emphasis: nil
+ pointSize: 10
+...etc...
+		tabs: 	an OrderedCollection(a GLMTabLabelBrick(496128768) a GLMTabLabelBrick(831...etc...
+
+
+LazyTabGroupMorph(TabGroupMorph)>>selectedPageIndex:
+	Receiver: a LazyTabGroupMorph(435206400)
+	Arguments and temporary variables: 
+		index: 	3
+	Receiver's instance variables: 
+		bounds: 	(256.0@125.0) corner: (845.0@583.0)
+		owner: 	nil
+		submorphs: 	an Array(a PanelMorph(881980160) a PanelMorph(643678464))
+		fullBounds: 	nil
+		color: 	Color transparent
+		extension: 	a MorphExtension (355605248)
+		borderWidth: 	0
+		borderColor: 	Color yellow
+		model: 	nil
+		tabSelectorMorph: 	a GLMTabSelectorBrick(214175488)
+		contentMorph: 	a PanelMorph(881980160)
+		pageMorphs: 	an OrderedCollection(a LazyTabPage(465370368) a LazyTabPage(3480936...etc...
+		announcer: 	a GLMAnnouncer
+		toolbarMorph: 	a PanelMorph(665829120)
+		headerMorph: 	a PanelMorph(643678464)
+		tabSelectorWidth: 	nil
+
+
+GLMMorphicAccumulatorRenderer>>actOnPaneAdded:
+	Receiver: a GLMMorphicAccumulatorRenderer
+	Arguments and temporary variables: 
+		ann: 	a GLMPaneAdded
+	Receiver's instance variables: 
+		renderer: 	a GLMMorphicRenderer
+		tabs: 	a LazyTabGroupMorph(435206400)
+
+
+
+--- The full stack ---
+OrderedCollection(Object)>>errorSubscriptBounds:
+OrderedCollection>>at:
+[ :ann | 
+aBrowser
+	activeEntity: ((aBrowser panes at: ann pageIndex) port: #entity) value ] in GLMMorphicAccumulatorRenderer>>render:
+BlockClosure>>cull:
+BlockClosure>>cull:cull:
+[ action cull: anAnnouncement cull: announcer ] in AnnouncementSubscription>>deliver:
+BlockClosure>>on:do:
+BlockClosure>>on:fork:
+AnnouncementSubscription>>deliver:
+[ subscription deliver: anAnnouncement ] in SubscriptionRegistry>>deliver:to:startingAt:
+BlockClosure>>ifCurtailed:
+SubscriptionRegistry>>deliver:to:startingAt:
+SubscriptionRegistry>>deliver:to:
+SubscriptionRegistry>>deliver:
+GLMAnnouncer(Announcer)>>announce:
+GLMAnnouncer>>announce:
+LazyTabGroupMorph>>updatePageIndex:
+LazyTabGroupMorph(TabGroupMorph)>>update:
+LazyTabGroupMorph(Object)>>update:with:
+MorphChangedWithArguments>>deliverTo:
+LazyTabGroupMorph(Morph)>>handleUpdate:
+MessageSend>>value:
+MessageSend>>cull:
+MessageSend>>cull:cull:
+[ action cull: anAnnouncement cull: announcer ] in AnnouncementSubscription>>deliver:
+BlockClosure>>on:do:
+BlockClosure>>on:fork:
+AnnouncementSubscription>>deliver:
+[ subscription deliver: anAnnouncement ] in SubscriptionRegistry>>deliver:to:startingAt:
+BlockClosure>>ifCurtailed:
+SubscriptionRegistry>>deliver:to:startingAt:
+SubscriptionRegistry>>deliver:to:
+SubscriptionRegistry>>deliver:
+Announcer>>announce:
+GLMTabSelectorBrick(Morph)>>doAnnounce:
+GLMTabSelectorBrick(Morph)>>changed:with:
+GLMTabSelectorBrick>>selectedIndex:
+LazyTabGroupMorph(TabGroupMorph)>>selectedPageIndex:
+GLMMorphicAccumulatorRenderer>>actOnPaneAdded:
+ - - - - - - - - - - - - - - -  
+			- - - - - - - - - - - - - - - - - -
+MessageSend>>value:
+MessageSend>>cull:
+MessageSend>>cull:cull:
+[ action cull: anAnnouncement cull: announcer ] in AnnouncementSubscription>>deliver:
+BlockClosure>>on:do:
+BlockClosure>>on:fork:
+AnnouncementSubscription>>deliver:
+[ subscription deliver: anAnnouncement ] in SubscriptionRegistry>>deliver:to:startingAt:
+BlockClosure>>ifCurtailed:
+SubscriptionRegistry>>deliver:to:startingAt:
+SubscriptionRegistry>>deliver:to:
+SubscriptionRegistry>>deliver:
+GLMAccumulator(Announcer)>>announce:
+GLMAccumulator(GLMAnnouncer)>>announce:
+GLMAccumulator(GLMLoggedObject)>>announce:
+GLMAccumulator>>addPaneFrom:
+GLMAccumulator>>outerPortEvent:
+[ :each | each outerPortEvent: aPortEvent ] in GLMCompositePresentation>>outerPortEvent:
+OrderedCollection>>do:
+GLMCompositePresentation>>do:
+GLMCompositePresentation>>outerPortEvent:
+GLMPane>>portEvent:
+[ self silentValue: anObject.
+self pane
+	portEvent:
+		(GLMPortEvent
+			on: self
+			previouslyValued: oldValue
+			in: aTransmissionContext) ] in GLMPanePort>>changeValueTo:in:
+GLMPane>>notingPresentationChangeDo:
+GLMPanePort>>changeValueTo:in:
+GLMPanePort>>value:in:
+GLMPanePort>>receive:in:
+[ self transmissionStrategy transmitIn: aContext.
+self destination receive: self in: aContext ] in GLMTransmission>>transmitIn:
+GLMPane>>notingPresentationChangeDo:
+GLMPanePort(GLMBoundPort)>>notingPresentationChangeDo:
+GLMTransmission>>transmitIn:
+[ :each | each transmitIn: aPortEvent transmissionContext copy ] in GLMTabulator(GLMExplicitBrowser)>>innerPortEvent:
+OrderedCollection>>do:
+GLMTabulator(GLMExplicitBrowser)>>innerPortEvent:
+GLMPane>>portEvent:
+[ self silentValue: anObject.
+self pane
+	portEvent:
+		(GLMPortEvent
+			on: self
+			previouslyValued: oldValue
+			in: aTransmissionContext) ] in GLMPanePort>>changeValueTo:in:
+GLMPane>>notingPresentationChangeDo:
+GLMPanePort>>changeValueTo:in:
+GLMPanePort>>value:in:
+GLMPanePort>>receive:in:
+GLMPresentationBoundPort>>receive:in:
+[ self transmissionStrategy transmitIn: aContext.
+self destination receive: self in: aContext ] in GLMTransmission>>transmitIn:
+GLMPane>>notingPresentationChangeDo:
+GLMPresentationBoundPort(GLMBoundPort)>>notingPresentationChangeDo:
+GLMTransmission>>transmitIn:
+GLMTransmission>>transmit
+ByteSymbol(Symbol)>>value:
+IdentitySet(Set)>>do:
+GLMListPresentation(GLMPresentation)>>selection:
+[ aPresentation selection: ann selectionValue.
+aPresentation selectionPath: ann selectionPathValue ] in [ :ann | 
+aPresentation announcer
+	suspendAllWhile: [ aPresentation selection: ann selectionValue.
+		aPresentation selectionPath: ann selectionPathValue ] ] in GLMMorphicListRenderer(GLMMorphicListingRenderer)>>render:
+BlockClosure>>ensure:
+GLMListPresentation(GLMAnnouncer)>>suspendAllWhile:
+[ :ann | 
+aPresentation announcer
+	suspendAllWhile: [ aPresentation selection: ann selectionValue.
+		aPresentation selectionPath: ann selectionPathValue ] ] in GLMMorphicListRenderer(GLMMorphicListingRenderer)>>render:
+BlockClosure>>cull:
+BlockClosure>>cull:cull:
+[ action cull: anAnnouncement cull: announcer ] in AnnouncementSubscription>>deliver:
+BlockClosure>>on:do:
+BlockClosure>>on:fork:
+AnnouncementSubscription>>deliver:
+[ subscription deliver: anAnnouncement ] in SubscriptionRegistry>>deliver:to:startingAt:
+BlockClosure>>ifCurtailed:
+SubscriptionRegistry>>deliver:to:startingAt:
+SubscriptionRegistry>>deliver:to:
+SubscriptionRegistry>>deliver:
+GLMAnnouncer(Announcer)>>announce:
+GLMAnnouncer>>announce:
+GLMTreeMorphModel>>selection:
+[ | selHolder |
+selHolder := self newSelectionHolderWithNodePath: path.
+self listModel selection: selHolder ] in MorphTreeListManager>>mouseUp:on:
+BlockClosure>>ensure:
+MorphTreeListManager>>selectionUpdateFromViewWhile:
+MorphTreeListManager>>mouseUp:on:
+GLMPaginatedMorphTreeMorph(MorphTreeMorph)>>mouseUp:
+GLMPaginatedMorphTreeMorph(Morph)>>handleMouseUp:
+MouseButtonEvent>>sentTo:
+GLMPaginatedMorphTreeMorph(Morph)>>handleEvent:
+GLMPaginatedMorphTreeMorph(Morph)>>handleFocusEvent:
+[ ActiveHand := self.
+ActiveEvent := anEvent.
+result := focusHolder
+	handleFocusEvent: (anEvent transformedBy: (focusHolder transformedFrom: self)) ] in HandMorph>>sendFocusEvent:to:clear:
+BlockClosure>>on:do:
+WorldMorph(PasteUpMorph)>>becomeActiveDuring:
+HandMorph>>sendFocusEvent:to:clear:
+HandMorph>>sendEvent:focus:clear:
+HandMorph>>sendMouseEvent:
+HandMorph>>handleEvent:
+MouseClickState>>handleEvent:from:
+HandMorph>>handleEvent:
+HandMorph>>processEvents
+[ :h | 
+ActiveHand := h.
+h processEvents.
+ActiveHand := nil ] in WorldState>>doOneCycleNowFor:
+Array(SequenceableCollection)>>do:
+WorldState>>handsDo:
+WorldState>>doOneCycleNowFor:
+WorldState>>doOneCycleFor:
+WorldMorph>>doOneCycle
+[ [ World doOneCycle.
+Processor yield.
+false ] whileFalse: [  ] ] in MorphicUIManager>>spawnNewProcess
+[ self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+-------------------------------------------------------------------------------
+
+THERE_BE_DRAGONS_HERE
+MessageNotUnderstood: receiver of "port:" is nil
+14 June 2018 1:49:36.272493 pm
+
+VM: Win32 - IX86 - 6.2 - CoInterpreter VMMaker.oscog-HolgerHansPeterFreyther.1880 uuid: 16138eb3-2390-40f5-a6c8-15f0494936f8 Jul 18 2016
+StackToRegisterMappingCogit VMMaker.oscog-HolgerHansPeterFreyther.1880 uuid: 16138eb3-2390-40f5-a6c8-15f0494936f8 Jul 18 2016
+https://github.com/pharo-project/pharo-vm.git Commit: 3daf6cb181c8332cf6993b07430e0d5f0886fda9 Date: 2016-07-16 18:01:23 +0200 By: GitHub <noreply@github.com> Jenkins build #597
+
+Image: Pharo5.0 [Latest update: #50761]
+
+UndefinedObject(Object)>>doesNotUnderstand: #port:
+	Receiver: nil
+	Arguments and temporary variables: 
+		aMessage: 	port: #entity
+		exception: 	MessageNotUnderstood: receiver of "port:" is nil
+		resumeValue: 	nil
+	Receiver's instance variables: 
+nil
+
+[ :ann | 
+aBrowser
+	activeEntity: ((aBrowser panes at: ann pageIndex) port: #entity) value ] in GLMMorphicAccumulatorRenderer>>render:
+	Receiver: a GLMMorphicAccumulatorRenderer
+	Arguments and temporary variables: 
+		aBrowser: 	a GLMAccumulator(id=813254400 title=nil pane=a GLMPane(707560704 deta...etc...
+		ann: 	a LazyTabPageChanged
+	Receiver's instance variables: 
+		renderer: 	a GLMMorphicRenderer
+		tabs: 	a LazyTabGroupMorph(435206400)
+
+
+BlockClosure>>cull:
+	Receiver: [ :ann | 
+aBrowser
+	activeEntity: ((aBrowser panes at: ann pageIndex) port: #entity) value...etc...
+	Arguments and temporary variables: 
+		anArg: 	a LazyTabPageChanged
+	Receiver's instance variables: 
+		outerContext: 	GLMMorphicAccumulatorRenderer>>render:
+		startpc: 	212
+		numArgs: 	1
+
+
+BlockClosure>>cull:cull:
+	Receiver: [ :ann | 
+aBrowser
+	activeEntity: ((aBrowser panes at: ann pageIndex) port: #entity) value...etc...
+	Arguments and temporary variables: 
+		firstArg: 	a LazyTabPageChanged
+		secondArg: 	a GLMAnnouncer
+	Receiver's instance variables: 
+		outerContext: 	GLMMorphicAccumulatorRenderer>>render:
+		startpc: 	212
+		numArgs: 	1
+
+
+[ action cull: anAnnouncement cull: announcer ] in AnnouncementSubscription>>deliver:
+	Receiver: an AnnouncementSubscription
+	Arguments and temporary variables: 
+		anAnnouncement: 	a LazyTabPageChanged
+	Receiver's instance variables: 
+		announcer: 	a GLMAnnouncer
+		announcementClass: 	LazyTabPageChanged
+		subscriber: 	a GLMMorphicAccumulatorRenderer
+		action: 	[ :ann | 
+aBrowser
+	activeEntity: ((aBrowser panes at: ann pageIndex) p...etc...
+
+
+BlockClosure>>on:do:
+	Receiver: [ action cull: anAnnouncement cull: announcer ]
+	Arguments and temporary variables: 
+		exception: 	UnhandledError
+		handlerAction: 	[ :ex | 
+| copy onDoCtx process handler bottom thisCtx |
+onDoCtx...etc...
+	Receiver's instance variables: 
+		outerContext: 	AnnouncementSubscription>>deliver:
+		startpc: 	47
+		numArgs: 	0
+
+
+BlockClosure>>on:fork:
+	Receiver: [ action cull: anAnnouncement cull: announcer ]
+	Arguments and temporary variables: 
+		exception: 	UnhandledError
+		handlerAction: 	[ :ex | ex pass ]
+	Receiver's instance variables: 
+		outerContext: 	AnnouncementSubscription>>deliver:
+		startpc: 	47
+		numArgs: 	0
+
+
+AnnouncementSubscription>>deliver:
+	Receiver: an AnnouncementSubscription
+	Arguments and temporary variables: 
+		anAnnouncement: 	a LazyTabPageChanged
+	Receiver's instance variables: 
+		announcer: 	a GLMAnnouncer
+		announcementClass: 	LazyTabPageChanged
+		subscriber: 	a GLMMorphicAccumulatorRenderer
+		action: 	[ :ann | 
+aBrowser
+	activeEntity: ((aBrowser panes at: ann pageIndex) p...etc...
+
+
+[ subscription deliver: anAnnouncement ] in SubscriptionRegistry>>deliver:to:startingAt:
+	Receiver: a SubscriptionRegistry
+	Arguments and temporary variables: 
+		anAnnouncement: 	a LazyTabPageChanged
+		subs: 	an Array(an AnnouncementSubscription)
+		startIndex: 	1
+		index: 	1
+		subscription: 	an AnnouncementSubscription
+	Receiver's instance variables: 
+		subscriptions: 	an IdentitySet(an AnnouncementSubscription an AnnouncementSubscr...etc...
+		monitor: 	a Semaphore()
+
+
+BlockClosure>>ifCurtailed:
+	Receiver: [ subscription deliver: anAnnouncement ]
+	Arguments and temporary variables: 
+		aBlock: 	[ self deliver: anAnnouncement to: subs startingAt: index + 1 ]
+		complete: 	nil
+		result: 	nil
+	Receiver's instance variables: 
+		outerContext: 	SubscriptionRegistry>>deliver:to:startingAt:
+		startpc: 	54
+		numArgs: 	0
+
+
+SubscriptionRegistry>>deliver:to:startingAt:
+	Receiver: a SubscriptionRegistry
+	Arguments and temporary variables: 
+		anAnnouncement: 	a LazyTabPageChanged
+		subs: 	an Array(an AnnouncementSubscription)
+		startIndex: 	1
+		subscription: 	an AnnouncementSubscription
+		index: 	1
+	Receiver's instance variables: 
+		subscriptions: 	an IdentitySet(an AnnouncementSubscription an AnnouncementSubscr...etc...
+		monitor: 	a Semaphore()
+
+
+SubscriptionRegistry>>deliver:to:
+	Receiver: a SubscriptionRegistry
+	Arguments and temporary variables: 
+		anAnnouncement: 	a LazyTabPageChanged
+		subs: 	an Array(an AnnouncementSubscription)
+	Receiver's instance variables: 
+		subscriptions: 	an IdentitySet(an AnnouncementSubscription an AnnouncementSubscr...etc...
+		monitor: 	a Semaphore()
+
+
+SubscriptionRegistry>>deliver:
+	Receiver: a SubscriptionRegistry
+	Arguments and temporary variables: 
+		interestedSubscriptions: 	an Array(an AnnouncementSubscription)
+		anAnnouncement: 	a LazyTabPageChanged
+	Receiver's instance variables: 
+		subscriptions: 	an IdentitySet(an AnnouncementSubscription an AnnouncementSubscr...etc...
+		monitor: 	a Semaphore()
+
+
+GLMAnnouncer(Announcer)>>announce:
+	Receiver: a GLMAnnouncer
+	Arguments and temporary variables: 
+		anAnnouncement: 	a LazyTabPageChanged
+		announcement: 	a LazyTabPageChanged
+	Receiver's instance variables: 
+		registry: 	a SubscriptionRegistry
+		suspendAll: 	false
+		suspendedAnnouncemets: 	an OrderedCollection()
+
+
+GLMAnnouncer>>announce:
+	Receiver: a GLMAnnouncer
+	Arguments and temporary variables: 
+		anAnnouncement: 	a LazyTabPageChanged
+	Receiver's instance variables: 
+		registry: 	a SubscriptionRegistry
+		suspendAll: 	false
+		suspendedAnnouncemets: 	an OrderedCollection()
+
+
+LazyTabGroupMorph>>updatePageIndex:
+	Receiver: a LazyTabGroupMorph(435206400)
+	Arguments and temporary variables: 
+		index: 	3
+		p: 	a PanelMorph(592025344)
+		oldPage: 	a GLMTabLabelBrick(734861568)
+	Receiver's instance variables: 
+		bounds: 	(256.0@125.0) corner: (845.0@583.0)
+		owner: 	nil
+		submorphs: 	an Array(a PanelMorph(881980160) a PanelMorph(643678464))
+		fullBounds: 	nil
+		color: 	Color transparent
+		extension: 	a MorphExtension (355605248)
+		borderWidth: 	0
+		borderColor: 	Color yellow
+		model: 	nil
+		tabSelectorMorph: 	a GLMTabSelectorBrick(214175488)
+		contentMorph: 	a PanelMorph(881980160)
+		pageMorphs: 	an OrderedCollection(a LazyTabPage(465370368) a LazyTabPage(3480936...etc...
+		announcer: 	a GLMAnnouncer
+		toolbarMorph: 	a PanelMorph(665829120)
+		headerMorph: 	a PanelMorph(643678464)
+		tabSelectorWidth: 	nil
+
+
+LazyTabGroupMorph(TabGroupMorph)>>update:
+	Receiver: a LazyTabGroupMorph(435206400)
+	Arguments and temporary variables: 
+		aSymbol: 	#selectedIndex
+	Receiver's instance variables: 
+		bounds: 	(256.0@125.0) corner: (845.0@583.0)
+		owner: 	nil
+		submorphs: 	an Array(a PanelMorph(881980160) a PanelMorph(643678464))
+		fullBounds: 	nil
+		color: 	Color transparent
+		extension: 	a MorphExtension (355605248)
+		borderWidth: 	0
+		borderColor: 	Color yellow
+		model: 	nil
+		tabSelectorMorph: 	a GLMTabSelectorBrick(214175488)
+		contentMorph: 	a PanelMorph(881980160)
+		pageMorphs: 	an OrderedCollection(a LazyTabPage(465370368) a LazyTabPage(3480936...etc...
+		announcer: 	a GLMAnnouncer
+		toolbarMorph: 	a PanelMorph(665829120)
+		headerMorph: 	a PanelMorph(643678464)
+		tabSelectorWidth: 	nil
+
+
+LazyTabGroupMorph(Object)>>update:with:
+	Receiver: a LazyTabGroupMorph(435206400)
+	Arguments and temporary variables: 
+		anAspect: 	#selectedIndex
+		anObject: 	1
+	Receiver's instance variables: 
+		bounds: 	(256.0@125.0) corner: (845.0@583.0)
+		owner: 	nil
+		submorphs: 	an Array(a PanelMorph(881980160) a PanelMorph(643678464))
+		fullBounds: 	nil
+		color: 	Color transparent
+		extension: 	a MorphExtension (355605248)
+		borderWidth: 	0
+		borderColor: 	Color yellow
+		model: 	nil
+		tabSelectorMorph: 	a GLMTabSelectorBrick(214175488)
+		contentMorph: 	a PanelMorph(881980160)
+		pageMorphs: 	an OrderedCollection(a LazyTabPage(465370368) a LazyTabPage(3480936...etc...
+		announcer: 	a GLMAnnouncer
+		toolbarMorph: 	a PanelMorph(665829120)
+		headerMorph: 	a PanelMorph(643678464)
+		tabSelectorWidth: 	nil
+
+
+MorphChangedWithArguments>>deliverTo:
+	Receiver: a MorphChangedWithArguments
+	Arguments and temporary variables: 
+		aHandler: 	a LazyTabGroupMorph(435206400)
+	Receiver's instance variables: 
+		morph: 	a GLMTabSelectorBrick(214175488)
+		selector: 	#selectedIndex
+		arguments: 	1
+
+
+LazyTabGroupMorph(Morph)>>handleUpdate:
+	Receiver: a LazyTabGroupMorph(435206400)
+	Arguments and temporary variables: 
+		aMorphChangedAnnouncement: 	a MorphChangedWithArguments
+	Receiver's instance variables: 
+		bounds: 	(256.0@125.0) corner: (845.0@583.0)
+		owner: 	nil
+		submorphs: 	an Array(a PanelMorph(881980160) a PanelMorph(643678464))
+		fullBounds: 	nil
+		color: 	Color transparent
+		extension: 	a MorphExtension (355605248)
+		borderWidth: 	0
+		borderColor: 	Color yellow
+		model: 	nil
+		tabSelectorMorph: 	a GLMTabSelectorBrick(214175488)
+		contentMorph: 	a PanelMorph(881980160)
+		pageMorphs: 	an OrderedCollection(a LazyTabPage(465370368) a LazyTabPage(3480936...etc...
+		announcer: 	a GLMAnnouncer
+		toolbarMorph: 	a PanelMorph(665829120)
+		headerMorph: 	a PanelMorph(643678464)
+		tabSelectorWidth: 	nil
+
+
+MessageSend>>value:
+	Receiver: MessageSend(#handleUpdate: -> a LazyTabGroupMorph(435206400))
+	Arguments and temporary variables: 
+		anObject: 	a MorphChangedWithArguments
+	Receiver's instance variables: 
+		receiver: 	a LazyTabGroupMorph(435206400)
+		selector: 	#handleUpdate:
+		arguments: 	#()
+
+
+MessageSend>>cull:
+	Receiver: MessageSend(#handleUpdate: -> a LazyTabGroupMorph(435206400))
+	Arguments and temporary variables: 
+		arg: 	a MorphChangedWithArguments
+	Receiver's instance variables: 
+		receiver: 	a LazyTabGroupMorph(435206400)
+		selector: 	#handleUpdate:
+		arguments: 	#()
+
+
+MessageSend>>cull:cull:
+	Receiver: MessageSend(#handleUpdate: -> a LazyTabGroupMorph(435206400))
+	Arguments and temporary variables: 
+		arg1: 	a MorphChangedWithArguments
+		arg2: 	an Announcer
+	Receiver's instance variables: 
+		receiver: 	a LazyTabGroupMorph(435206400)
+		selector: 	#handleUpdate:
+		arguments: 	#()
+
+
+[ action cull: anAnnouncement cull: announcer ] in AnnouncementSubscription>>deliver:
+	Receiver: an AnnouncementSubscription
+	Arguments and temporary variables: 
+		anAnnouncement: 	a MorphChangedWithArguments
+	Receiver's instance variables: 
+		announcer: 	an Announcer
+		announcementClass: 	an AnnouncementSet(MorphChanged MorphChangedWithArguments)
+		subscriber: 	a LazyTabGroupMorph(435206400)
+		action: 	MessageSend(#handleUpdate: -> a LazyTabGroupMorph(435206400))
+
+
+BlockClosure>>on:do:
+	Receiver: [ action cull: anAnnouncement cull: announcer ]
+	Arguments and temporary variables: 
+		exception: 	UnhandledError
+		handlerAction: 	[ :ex | 
+| copy onDoCtx process handler bottom thisCtx |
+onDoCtx...etc...
+	Receiver's instance variables: 
+		outerContext: 	AnnouncementSubscription>>deliver:
+		startpc: 	47
+		numArgs: 	0
+
+
+BlockClosure>>on:fork:
+	Receiver: [ action cull: anAnnouncement cull: announcer ]
+	Arguments and temporary variables: 
+		exception: 	UnhandledError
+		handlerAction: 	[ :ex | ex pass ]
+	Receiver's instance variables: 
+		outerContext: 	AnnouncementSubscription>>deliver:
+		startpc: 	47
+		numArgs: 	0
+
+
+AnnouncementSubscription>>deliver:
+	Receiver: an AnnouncementSubscription
+	Arguments and temporary variables: 
+		anAnnouncement: 	a MorphChangedWithArguments
+	Receiver's instance variables: 
+		announcer: 	an Announcer
+		announcementClass: 	an AnnouncementSet(MorphChanged MorphChangedWithArguments)
+		subscriber: 	a LazyTabGroupMorph(435206400)
+		action: 	MessageSend(#handleUpdate: -> a LazyTabGroupMorph(435206400))
+
+
+[ subscription deliver: anAnnouncement ] in SubscriptionRegistry>>deliver:to:startingAt:
+	Receiver: a SubscriptionRegistry
+	Arguments and temporary variables: 
+		anAnnouncement: 	a MorphChangedWithArguments
+		subs: 	an Array(an AnnouncementSubscription)
+		startIndex: 	1
+		index: 	1
+		subscription: 	an AnnouncementSubscription
+	Receiver's instance variables: 
+		subscriptions: 	an IdentitySet(an AnnouncementSubscription)
+		monitor: 	a Semaphore()
+
+
+BlockClosure>>ifCurtailed:
+	Receiver: [ subscription deliver: anAnnouncement ]
+	Arguments and temporary variables: 
+		aBlock: 	[ self deliver: anAnnouncement to: subs startingAt: index + 1 ]
+		complete: 	nil
+		result: 	nil
+	Receiver's instance variables: 
+		outerContext: 	SubscriptionRegistry>>deliver:to:startingAt:
+		startpc: 	54
+		numArgs: 	0
+
+
+SubscriptionRegistry>>deliver:to:startingAt:
+	Receiver: a SubscriptionRegistry
+	Arguments and temporary variables: 
+		anAnnouncement: 	a MorphChangedWithArguments
+		subs: 	an Array(an AnnouncementSubscription)
+		startIndex: 	1
+		subscription: 	an AnnouncementSubscription
+		index: 	1
+	Receiver's instance variables: 
+		subscriptions: 	an IdentitySet(an AnnouncementSubscription)
+		monitor: 	a Semaphore()
+
+
+SubscriptionRegistry>>deliver:to:
+	Receiver: a SubscriptionRegistry
+	Arguments and temporary variables: 
+		anAnnouncement: 	a MorphChangedWithArguments
+		subs: 	an Array(an AnnouncementSubscription)
+	Receiver's instance variables: 
+		subscriptions: 	an IdentitySet(an AnnouncementSubscription)
+		monitor: 	a Semaphore()
+
+
+SubscriptionRegistry>>deliver:
+	Receiver: a SubscriptionRegistry
+	Arguments and temporary variables: 
+		interestedSubscriptions: 	an Array(an AnnouncementSubscription)
+		anAnnouncement: 	a MorphChangedWithArguments
+	Receiver's instance variables: 
+		subscriptions: 	an IdentitySet(an AnnouncementSubscription)
+		monitor: 	a Semaphore()
+
+
+Announcer>>announce:
+	Receiver: an Announcer
+	Arguments and temporary variables: 
+		anAnnouncement: 	a MorphChangedWithArguments
+		announcement: 	a MorphChangedWithArguments
+	Receiver's instance variables: 
+		registry: 	a SubscriptionRegistry
+
+
+GLMTabSelectorBrick(Morph)>>doAnnounce:
+	Receiver: a GLMTabSelectorBrick(214175488)
+	Arguments and temporary variables: 
+		anAnnouncement: 	a MorphChangedWithArguments
+	Receiver's instance variables: 
+		bounds: 	(256.0@125.0) corner: (795.0@149.0)
+		owner: 	a PanelMorph(643678464)
+		submorphs: 	an Array(a GLMBrick(57165056))
+		fullBounds: 	(256@125) corner: (795@149)
+		color: 	Color transparent
+		extension: 	a MorphExtension (848443136) [other:  (minHeight -> 24) (announcer -...etc...
+		brickRoot: 	a GLMBrick(57165056)
+		vResizing: 	#spaceFill
+		hResizing: 	#spaceFill
+		selectedIndex: 	3
+		font: 	a LogicalFont
+ familyName: Source Sans Pro
+ emphasis: nil
+ pointSize: 10
+...etc...
+		tabs: 	an OrderedCollection(a GLMTabLabelBrick(496128768) a GLMTabLabelBrick(831...etc...
+
+
+GLMTabSelectorBrick(Morph)>>changed:with:
+	Receiver: a GLMTabSelectorBrick(214175488)
+	Arguments and temporary variables: 
+		anAspect: 	#selectedIndex
+		anObject: 	1
+	Receiver's instance variables: 
+		bounds: 	(256.0@125.0) corner: (795.0@149.0)
+		owner: 	a PanelMorph(643678464)
+		submorphs: 	an Array(a GLMBrick(57165056))
+		fullBounds: 	(256@125) corner: (795@149)
+		color: 	Color transparent
+		extension: 	a MorphExtension (848443136) [other:  (minHeight -> 24) (announcer -...etc...
+		brickRoot: 	a GLMBrick(57165056)
+		vResizing: 	#spaceFill
+		hResizing: 	#spaceFill
+		selectedIndex: 	3
+		font: 	a LogicalFont
+ familyName: Source Sans Pro
+ emphasis: nil
+ pointSize: 10
+...etc...
+		tabs: 	an OrderedCollection(a GLMTabLabelBrick(496128768) a GLMTabLabelBrick(831...etc...
+
+
+GLMTabSelectorBrick>>selectedIndex:
+	Receiver: a GLMTabSelectorBrick(214175488)
+	Arguments and temporary variables: 
+		index: 	3
+		oldIndex: 	1
+	Receiver's instance variables: 
+		bounds: 	(256.0@125.0) corner: (795.0@149.0)
+		owner: 	a PanelMorph(643678464)
+		submorphs: 	an Array(a GLMBrick(57165056))
+		fullBounds: 	(256@125) corner: (795@149)
+		color: 	Color transparent
+		extension: 	a MorphExtension (848443136) [other:  (minHeight -> 24) (announcer -...etc...
+		brickRoot: 	a GLMBrick(57165056)
+		vResizing: 	#spaceFill
+		hResizing: 	#spaceFill
+		selectedIndex: 	3
+		font: 	a LogicalFont
+ familyName: Source Sans Pro
+ emphasis: nil
+ pointSize: 10
+...etc...
+		tabs: 	an OrderedCollection(a GLMTabLabelBrick(496128768) a GLMTabLabelBrick(831...etc...
+
+
+LazyTabGroupMorph(TabGroupMorph)>>selectedPageIndex:
+	Receiver: a LazyTabGroupMorph(435206400)
+	Arguments and temporary variables: 
+		index: 	3
+	Receiver's instance variables: 
+		bounds: 	(256.0@125.0) corner: (845.0@583.0)
+		owner: 	nil
+		submorphs: 	an Array(a PanelMorph(881980160) a PanelMorph(643678464))
+		fullBounds: 	nil
+		color: 	Color transparent
+		extension: 	a MorphExtension (355605248)
+		borderWidth: 	0
+		borderColor: 	Color yellow
+		model: 	nil
+		tabSelectorMorph: 	a GLMTabSelectorBrick(214175488)
+		contentMorph: 	a PanelMorph(881980160)
+		pageMorphs: 	an OrderedCollection(a LazyTabPage(465370368) a LazyTabPage(3480936...etc...
+		announcer: 	a GLMAnnouncer
+		toolbarMorph: 	a PanelMorph(665829120)
+		headerMorph: 	a PanelMorph(643678464)
+		tabSelectorWidth: 	nil
+
+
+GLMMorphicAccumulatorRenderer>>actOnPaneAdded:
+	Receiver: a GLMMorphicAccumulatorRenderer
+	Arguments and temporary variables: 
+		ann: 	a GLMPaneAdded
+	Receiver's instance variables: 
+		renderer: 	a GLMMorphicRenderer
+		tabs: 	a LazyTabGroupMorph(435206400)
+
+
+MessageSend>>value:
+	Receiver: MessageSend(#actOnPaneAdded: -> a GLMMorphicAccumulatorRenderer)
+	Arguments and temporary variables: 
+		anObject: 	a GLMPaneAdded
+	Receiver's instance variables: 
+		receiver: 	a GLMMorphicAccumulatorRenderer
+		selector: 	#actOnPaneAdded:
+		arguments: 	#()
+
+
+
+--- The full stack ---
+UndefinedObject(Object)>>doesNotUnderstand: #port:
+[ :ann | 
+aBrowser
+	activeEntity: ((aBrowser panes at: ann pageIndex) port: #entity) value ] in GLMMorphicAccumulatorRenderer>>render:
+BlockClosure>>cull:
+BlockClosure>>cull:cull:
+[ action cull: anAnnouncement cull: announcer ] in AnnouncementSubscription>>deliver:
+BlockClosure>>on:do:
+BlockClosure>>on:fork:
+AnnouncementSubscription>>deliver:
+[ subscription deliver: anAnnouncement ] in SubscriptionRegistry>>deliver:to:startingAt:
+BlockClosure>>ifCurtailed:
+SubscriptionRegistry>>deliver:to:startingAt:
+SubscriptionRegistry>>deliver:to:
+SubscriptionRegistry>>deliver:
+GLMAnnouncer(Announcer)>>announce:
+GLMAnnouncer>>announce:
+LazyTabGroupMorph>>updatePageIndex:
+LazyTabGroupMorph(TabGroupMorph)>>update:
+LazyTabGroupMorph(Object)>>update:with:
+MorphChangedWithArguments>>deliverTo:
+LazyTabGroupMorph(Morph)>>handleUpdate:
+MessageSend>>value:
+MessageSend>>cull:
+MessageSend>>cull:cull:
+[ action cull: anAnnouncement cull: announcer ] in AnnouncementSubscription>>deliver:
+BlockClosure>>on:do:
+BlockClosure>>on:fork:
+AnnouncementSubscription>>deliver:
+[ subscription deliver: anAnnouncement ] in SubscriptionRegistry>>deliver:to:startingAt:
+BlockClosure>>ifCurtailed:
+SubscriptionRegistry>>deliver:to:startingAt:
+SubscriptionRegistry>>deliver:to:
+SubscriptionRegistry>>deliver:
+Announcer>>announce:
+GLMTabSelectorBrick(Morph)>>doAnnounce:
+GLMTabSelectorBrick(Morph)>>changed:with:
+GLMTabSelectorBrick>>selectedIndex:
+LazyTabGroupMorph(TabGroupMorph)>>selectedPageIndex:
+GLMMorphicAccumulatorRenderer>>actOnPaneAdded:
+MessageSend>>value:
+ - - - - - - - - - - - - - - -  
+			- - - - - - - - - - - - - - - - - -
+MessageSend>>cull:
+MessageSend>>cull:cull:
+[ action cull: anAnnouncement cull: announcer ] in AnnouncementSubscription>>deliver:
+BlockClosure>>on:do:
+BlockClosure>>on:fork:
+AnnouncementSubscription>>deliver:
+[ subscription deliver: anAnnouncement ] in SubscriptionRegistry>>deliver:to:startingAt:
+BlockClosure>>ifCurtailed:
+SubscriptionRegistry>>deliver:to:startingAt:
+SubscriptionRegistry>>deliver:to:
+SubscriptionRegistry>>deliver:
+GLMAccumulator(Announcer)>>announce:
+GLMAccumulator(GLMAnnouncer)>>announce:
+GLMAccumulator(GLMLoggedObject)>>announce:
+GLMAccumulator>>addPaneFrom:
+GLMAccumulator>>outerPortEvent:
+[ :each | each outerPortEvent: aPortEvent ] in GLMCompositePresentation>>outerPortEvent:
+OrderedCollection>>do:
+GLMCompositePresentation>>do:
+GLMCompositePresentation>>outerPortEvent:
+GLMPane>>portEvent:
+[ self silentValue: anObject.
+self pane
+	portEvent:
+		(GLMPortEvent
+			on: self
+			previouslyValued: oldValue
+			in: aTransmissionContext) ] in GLMPanePort>>changeValueTo:in:
+GLMPane>>notingPresentationChangeDo:
+GLMPanePort>>changeValueTo:in:
+GLMPanePort>>value:in:
+GLMPanePort>>receive:in:
+[ self transmissionStrategy transmitIn: aContext.
+self destination receive: self in: aContext ] in GLMTransmission>>transmitIn:
+GLMPane>>notingPresentationChangeDo:
+GLMPanePort(GLMBoundPort)>>notingPresentationChangeDo:
+GLMTransmission>>transmitIn:
+[ :each | each transmitIn: aPortEvent transmissionContext copy ] in GLMTabulator(GLMExplicitBrowser)>>innerPortEvent:
+OrderedCollection>>do:
+GLMTabulator(GLMExplicitBrowser)>>innerPortEvent:
+GLMPane>>portEvent:
+[ self silentValue: anObject.
+self pane
+	portEvent:
+		(GLMPortEvent
+			on: self
+			previouslyValued: oldValue
+			in: aTransmissionContext) ] in GLMPanePort>>changeValueTo:in:
+GLMPane>>notingPresentationChangeDo:
+GLMPanePort>>changeValueTo:in:
+GLMPanePort>>value:in:
+GLMPanePort>>receive:in:
+GLMPresentationBoundPort>>receive:in:
+[ self transmissionStrategy transmitIn: aContext.
+self destination receive: self in: aContext ] in GLMTransmission>>transmitIn:
+GLMPane>>notingPresentationChangeDo:
+GLMPresentationBoundPort(GLMBoundPort)>>notingPresentationChangeDo:
+GLMTransmission>>transmitIn:
+GLMTransmission>>transmit
+ByteSymbol(Symbol)>>value:
+IdentitySet(Set)>>do:
+GLMListPresentation(GLMPresentation)>>selection:
+[ aPresentation selection: ann selectionValue.
+aPresentation selectionPath: ann selectionPathValue ] in [ :ann | 
+aPresentation announcer
+	suspendAllWhile: [ aPresentation selection: ann selectionValue.
+		aPresentation selectionPath: ann selectionPathValue ] ] in GLMMorphicListRenderer(GLMMorphicListingRenderer)>>render:
+BlockClosure>>ensure:
+GLMListPresentation(GLMAnnouncer)>>suspendAllWhile:
+[ :ann | 
+aPresentation announcer
+	suspendAllWhile: [ aPresentation selection: ann selectionValue.
+		aPresentation selectionPath: ann selectionPathValue ] ] in GLMMorphicListRenderer(GLMMorphicListingRenderer)>>render:
+BlockClosure>>cull:
+BlockClosure>>cull:cull:
+[ action cull: anAnnouncement cull: announcer ] in AnnouncementSubscription>>deliver:
+BlockClosure>>on:do:
+BlockClosure>>on:fork:
+AnnouncementSubscription>>deliver:
+[ subscription deliver: anAnnouncement ] in SubscriptionRegistry>>deliver:to:startingAt:
+BlockClosure>>ifCurtailed:
+SubscriptionRegistry>>deliver:to:startingAt:
+SubscriptionRegistry>>deliver:to:
+SubscriptionRegistry>>deliver:
+GLMAnnouncer(Announcer)>>announce:
+GLMAnnouncer>>announce:
+GLMTreeMorphModel>>selection:
+[ | selHolder |
+selHolder := self newSelectionHolderWithNodePath: path.
+self listModel selection: selHolder ] in MorphTreeListManager>>mouseUp:on:
+BlockClosure>>ensure:
+MorphTreeListManager>>selectionUpdateFromViewWhile:
+MorphTreeListManager>>mouseUp:on:
+GLMPaginatedMorphTreeMorph(MorphTreeMorph)>>mouseUp:
+GLMPaginatedMorphTreeMorph(Morph)>>handleMouseUp:
+MouseButtonEvent>>sentTo:
+GLMPaginatedMorphTreeMorph(Morph)>>handleEvent:
+GLMPaginatedMorphTreeMorph(Morph)>>handleFocusEvent:
+[ ActiveHand := self.
+ActiveEvent := anEvent.
+result := focusHolder
+	handleFocusEvent: (anEvent transformedBy: (focusHolder transformedFrom: self)) ] in HandMorph>>sendFocusEvent:to:clear:
+BlockClosure>>on:do:
+WorldMorph(PasteUpMorph)>>becomeActiveDuring:
+HandMorph>>sendFocusEvent:to:clear:
+HandMorph>>sendEvent:focus:clear:
+HandMorph>>sendMouseEvent:
+HandMorph>>handleEvent:
+MouseClickState>>handleEvent:from:
+HandMorph>>handleEvent:
+HandMorph>>processEvents
+[ :h | 
+ActiveHand := h.
+h processEvents.
+ActiveHand := nil ] in WorldState>>doOneCycleNowFor:
+Array(SequenceableCollection)>>do:
+WorldState>>handsDo:
+WorldState>>doOneCycleNowFor:
+WorldState>>doOneCycleFor:
+WorldMorph>>doOneCycle
+[ [ World doOneCycle.
+Processor yield.
+false ] whileFalse: [  ] ] in MorphicUIManager>>spawnNewProcess
+[ self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+-------------------------------------------------------------------------------
+

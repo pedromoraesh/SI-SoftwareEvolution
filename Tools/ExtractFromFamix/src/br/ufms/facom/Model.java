@@ -66,6 +66,7 @@ public class Model {
 		this.setAllMethods(listMethods);
 		this.setInvocations(listInvocations);
 
+
 	}
 
 	private ArrayList<Invocation> candidateOfInvocation(ArrayList<Method> listMethods, ArrayList<Invocation> listInvocations) {
@@ -76,41 +77,7 @@ public class Model {
 					invocation.setCandidate(method);
 				}
 			}
-			//			for(Attribute attribute: listAttributes){
-			//				if(invocation.getCandidateID() == attribute.getId()){
-			//					invocation.setCandidate(attribute);
-			//				}
-			//			}
-			//			for(Parameter parameter: listParameters){
-			//				if(invocation.getCandidateID() == parameter.getId()){
-			//					invocation.setCandidate(parameter);
-			//				}
-			//			}
-			//			for(Enumm enumm: listEnum){
-			//				if(invocation.getCandidateID() == enumm.getId()){
-			//					invocation.setCandidate(enumm);
-			//				}
-			//			}
-			//			for(Class classe: listClasses){
-			//				if(invocation.getCandidateID() == classe.getId()){
-			//					invocation.setCandidate(classe);
-			//				}
-			//			}
-			//			for(Type type: listTypes){
-			//				if(invocation.getCandidateID() == type.getId()){
-			//					invocation.setCandidate(type);
-			//				}
-			//			}
-			//			for(ParameterizedType pType: listPType){
-			//				if(invocation.getCandidateID() == pType.getId()){
-			//					invocation.setCandidate(pType);
-			//				}
-			//			}
-			//			for(ParameterizableClass pClass: listPClass){
-			//				if(invocation.getCandidateID() == pClass.getId()){
-			//					invocation.setCandidate(pClass);
-			//				}
-			//			}
+
 		}
 		return listInvocations;
 	}
@@ -119,17 +86,7 @@ public class Model {
 		for(Method method: listMethods){
 			for(Invocation invocation: method.getListInvocation()){
 				if(invocation.getCandidate() != null){
-					//					if(invocation.getReciever() instanceof Attribute ){
-					//						Attribute temp = (Attribute)invocation.getReciever();
-					//						String fullName = "";
-					//						if(!(temp.getType() instanceof PrimitiveType)){
-					//							fullName = temp.getType().getFullName() + "." +StringUtils.remove(invocation.getSignature(), (temp.getName() + "."));
-					//						}
-					//						invocation.setFullName(fullName);
-					//					}
-
 					invocation.setFullName(invocation.getCandidate().getFullName());
-
 				}
 
 			}

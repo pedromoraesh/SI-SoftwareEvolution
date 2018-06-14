@@ -39,16 +39,15 @@ public class FormatData {
 					id = Integer.parseInt(split[2]);
 					line = in.nextLine();
 					while(!line.contains("FAMIX.")){
-						if(line.contains("ref")){
+						if(line.contains("ref:")){
 							//split = formatString(line);
 							line = StringUtils.remove(line, ")");
 							line = StringUtils.remove(line, "(");
 							line = StringUtils.remove(line, ":");
 							line = StringUtils.strip(line);
-							split = line.split(" ");
+							split = line.split(" ");							
 							list.add(split);
 						}
-
 						else if(line.contains("modifiers")){
 							line = StringUtils.remove(line, "'");
 							line = StringUtils.remove(line, ")");
@@ -60,8 +59,8 @@ public class FormatData {
 						//(signature '((GridView)listView).setAdapter(new ImageAdapter(getActivity()))'))
 						// -> signature ((GridView)listView).setAdapter(new ImageAdapter(getActivity()))
 						else if(line.contains("'") && line.contains("signature")){
-							if(StringUtils.countMatches(line, "'") == 2){	
-								String aux = StringUtils.substringBetween(line, "'", "')");
+							if(StringUtils.countMatches(line, "'") == 2){
+								String aux = StringUtils.substringBetween(line, "'", "'");							
 								line = StringUtils.remove(line, aux);
 								line = StringUtils.remove(line, ")");
 								line = StringUtils.remove(line, "(");
@@ -73,6 +72,7 @@ public class FormatData {
 								list.add(split);
 							}
 							else if(StringUtils.countMatches(line, "'") > 2){
+								
 								String aux = StringUtils.substringBetween(line, "'", "'))");
 								line = StringUtils.remove(line, aux);
 								line = StringUtils.remove(line, ")");
